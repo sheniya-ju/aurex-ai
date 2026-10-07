@@ -1,0 +1,19 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.core.config import settings
+from app.database.database import Base, engine
+from app.database import models  # noqa: F401
+from app.api.auth import router as auth_router
+from app.api.chat import router as chat_router
+from app.api.documents import router as documents_router
+from app.api.projects import router as projects_router
+from app.api.settings import router as settings_router
+
+Base.metadata.create_all(bind=engine)
+app=FastAPI(title="AUREX AI API",version="2.0.0",description="AUREX AI full-stack assistant API")
+app.add_middleware(CORSMiddleware,allow_origins=[settings.FRONTEND_URL,"http://localhost:5173","http://127.0.0.1:5173"],allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
+app.include_router(auth_router); app.include_router(chat_router); app.include_router(documents_router); app.include_router(projects_router); app.include_router(settings_router)
+@app.get("/")
+def root(): return {"message":"AUREX AI API is running","version":"2.0.0"}
+@app.get("/health")
+def health(): return {"status":"ok"}

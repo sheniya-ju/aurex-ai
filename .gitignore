@@ -1,0 +1,39 @@
+# =========================
+# Frontend
+# =========================
+frontend/node_modules/
+frontend/dist/
+
+# =========================
+# Backend
+# =========================
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/**/*.pyc
+
+# =========================
+# Environment variables
+# =========================
+.env
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# =========================
+# Local RAG / uploaded data
+# =========================
+backend/chroma_data/
+backend/uploads/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
