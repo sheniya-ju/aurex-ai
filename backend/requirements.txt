@@ -9,4 +9,3 @@ email-validator
 groq
 pymupdf
 chromadb
-sentence-transformers
