@@ -511,7 +511,7 @@ def _prepare(
 
 
 
-    ssources = (
+    sources = (
 
     retrieve_context(
         data.message,
