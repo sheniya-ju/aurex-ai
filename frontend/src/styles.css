@@ -1,134 +1,134 @@
-/\* =========================================================
+/* =========================================================
 
-   AUREX AI
+   AUREX AI
 
-   MAIN STYLESHEET
+   MAIN STYLESHEET
 
-   Compatible with current App.tsx
+   Compatible with current App.tsx
 
-\========================================================= \*/
-
-
-
-@import url("https\://fonts.googleapis.com/css2?family=Inter:wght\@400;500;600;650;700;750;800&display=swap");
+========================================================= */
 
 
 
-/\* =========================================================
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800&display=swap");
 
-   THEME VARIABLES
 
-\========================================================= \*/
+
+/* =========================================================
+
+   THEME VARIABLES
+
+========================================================= */
 
 
 
 :root {
 
-  --red: #d71920;
+  --red: #d71920;
 
-  --red-dark: #b91c1c;
+  --red-dark: #b91c1c;
 
-  --red-soft: #fff5f5;
-
-
-
-  --bg: #ffffff;
-
-  --surface: #ffffff;
-
-  --surface-2: #f8f8f8;
-
-  --surface-3: #f3f3f3;
+  --red-soft: #fff5f5;
 
 
 
-  --text: #171717;
+  --bg: #ffffff;
 
-  --text-secondary: #444444;
+  --surface: #ffffff;
 
-  --muted: #737373;
+  --surface-2: #f8f8f8;
 
-  --muted-light: #a1a1a1;
-
-
-
-  --border: #e5e5e5;
-
-  --border-light: #eeeeee;
+  --surface-3: #f3f3f3;
 
 
 
-  --danger: #c81e25;
+  --text: #171717;
+
+  --text-secondary: #444444;
+
+  --muted: #737373;
+
+  --muted-light: #a1a1a1;
 
 
 
-  font-family:
+  --border: #e5e5e5;
 
-    Inter,
-
-    system-ui,
-
-    -apple-system,
-
-    BlinkMacSystemFont,
-
-    "Segoe UI",
-
-    sans-serif;
+  --border-light: #eeeeee;
 
 
 
-  color: var(--text);
-
-  background: var(--bg);
+  --danger: #c81e25;
 
 
 
-  font-synthesis: none;
+  font-family:
 
-  text-rendering: optimizeLegibility;
+    Inter,
+
+    system-ui,
+
+    -apple-system,
+
+    BlinkMacSystemFont,
+
+    "Segoe UI",
+
+    sans-serif;
+
+
+
+  color: var(--text);
+
+  background: var(--bg);
+
+
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   DARK THEME
+   DARK THEME
 
-\========================================================= \*/
+========================================================= */
 
 
 
 :root[data-theme="dark"] {
 
-  --bg: #111111;
+  --bg: #111111;
 
-  --surface: #181818;
+  --surface: #181818;
 
-  --surface-2: #202020;
+  --surface-2: #202020;
 
-  --surface-3: #282828;
-
-
-
-  --text: #f5f5f5;
-
-  --text-secondary: #d0d0d0;
-
-  --muted: #a3a3a3;
-
-  --muted-light: #777777;
+  --surface-3: #282828;
 
 
 
-  --border: #303030;
+  --text: #f5f5f5;
 
-  --border-light: #272727;
+  --text-secondary: #d0d0d0;
+
+  --muted: #a3a3a3;
+
+  --muted-light: #777777;
 
 
 
-  --red-soft: #291415;
+  --border: #303030;
+
+  --border-light: #272727;
+
+
+
+  --red-soft: #291415;
 
 }
 
@@ -136,9 +136,9 @@
 
 :root[data-theme="dark"] body {
 
-  background: var(--bg);
+  background: var(--bg);
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -146,9 +146,9 @@
 
 :root[data-theme="dark"] .sidebar {
 
-  background: #151515;
+  background: #151515;
 
-  border-color: var(--border);
+  border-color: var(--border);
 
 }
 
@@ -156,7 +156,7 @@
 
 :root[data-theme="dark"] .chat-home {
 
-  background: var(--bg);
+  background: var(--bg);
 
 }
 
@@ -164,9 +164,9 @@
 
 :root[data-theme="dark"] .chat-header {
 
-  background: #151515;
+  background: #151515;
 
-  border-color: var(--border);
+  border-color: var(--border);
 
 }
 
@@ -174,11 +174,11 @@
 
 :root[data-theme="dark"] .new-chat {
 
-  background: #1d1d1d;
+  background: #1d1d1d;
 
-  border-color: #363636;
+  border-color: #363636;
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -186,9 +186,9 @@
 
 :root[data-theme="dark"] .new-chat:hover {
 
-  background: #252525;
+  background: #252525;
 
-  border-color: var(--red);
+  border-color: var(--red);
 
 }
 
@@ -198,7 +198,7 @@
 
 :root[data-theme="dark"] .nav-item.active {
 
-  background: #242424;
+  background: #242424;
 
 }
 
@@ -208,7 +208,7 @@
 
 :root[data-theme="dark"] .recent-chat.selected {
 
-  background: #242424;
+  background: #242424;
 
 }
 
@@ -216,7 +216,7 @@
 
 :root[data-theme="dark"] .recent-chat-main {
 
-  color: var(--text-secondary);
+  color: var(--text-secondary);
 
 }
 
@@ -224,11 +224,11 @@
 
 :root[data-theme="dark"] .model-selector {
 
-  background: #202020;
+  background: #202020;
 
-  color: var(--text);
+  color: var(--text);
 
-  border-color: #383838;
+  border-color: #383838;
 
 }
 
@@ -236,11 +236,11 @@
 
 :root[data-theme="dark"] .quick-actions button {
 
-  background: var(--surface);
+  background: var(--surface);
 
-  border-color: var(--border);
+  border-color: var(--border);
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -248,9 +248,9 @@
 
 :root[data-theme="dark"] .quick-actions button:hover {
 
-  background: #202020;
+  background: #202020;
 
-  border-color: #555;
+  border-color: #555;
 
 }
 
@@ -258,9 +258,9 @@
 
 :root[data-theme="dark"] .composer {
 
-  background: #1b1b1b;
+  background: #1b1b1b;
 
-  border-color: #383838;
+  border-color: #383838;
 
 }
 
@@ -268,7 +268,7 @@
 
 :root[data-theme="dark"] .composer:focus-within {
 
-  border-color: #666;
+  border-color: #666;
 
 }
 
@@ -276,7 +276,7 @@
 
 :root[data-theme="dark"] .composer textarea {
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -284,7 +284,7 @@
 
 :root[data-theme="dark"] .composer-attach:hover {
 
-  background: #292929;
+  background: #292929;
 
 }
 
@@ -292,9 +292,9 @@
 
 :root[data-theme="dark"] .attached-document {
 
-  background: #242424;
+  background: #242424;
 
-  border-color: #3a3a3a;
+  border-color: #3a3a3a;
 
 }
 
@@ -302,19 +302,19 @@
 
 :root[data-theme="dark"] .message-bubble {
 
-  background: #1c1c1c;
+  background: #1c1c1c;
 
-  border-color: #303030;
+  border-color: #303030;
 
 }
 
 
 
-:root[data-theme="dark"] .message-row\.user .message-bubble {
+:root[data-theme="dark"] .message-row.user .message-bubble {
 
-  background: #2b2b2b;
+  background: #2b2b2b;
 
-  border-color: #3b3b3b;
+  border-color: #3b3b3b;
 
 }
 
@@ -324,9 +324,9 @@
 
 :root[data-theme="dark"] .source-card {
 
-  background: #1c1c1c;
+  background: #1c1c1c;
 
-  border-color: #343434;
+  border-color: #343434;
 
 }
 
@@ -334,7 +334,7 @@
 
 :root[data-theme="dark"] .source-toggle:hover {
 
-  background: #252525;
+  background: #252525;
 
 }
 
@@ -342,7 +342,7 @@
 
 :root[data-theme="dark"] .inline-code {
 
-  background: #292929;
+  background: #292929;
 
 }
 
@@ -350,9 +350,9 @@
 
 :root[data-theme="dark"] .code-block-wrapper {
 
-  background: #111111;
+  background: #111111;
 
-  border-color: #333333;
+  border-color: #333333;
 
 }
 
@@ -360,9 +360,9 @@
 
 :root[data-theme="dark"] .code-block-header {
 
-  background: #191919;
+  background: #191919;
 
-  border-color: #333333;
+  border-color: #333333;
 
 }
 
@@ -372,7 +372,7 @@
 
 :root[data-theme="dark"] .markdown-table td {
 
-  border-color: #383838;
+  border-color: #383838;
 
 }
 
@@ -380,7 +380,7 @@
 
 :root[data-theme="dark"] .markdown-table th {
 
-  background: #242424;
+  background: #242424;
 
 }
 
@@ -388,9 +388,9 @@
 
 :root[data-theme="dark"] .reply-preview {
 
-  background: #202020;
+  background: #202020;
 
-  border-color: #383838;
+  border-color: #383838;
 
 }
 
@@ -402,9 +402,9 @@
 
 :root[data-theme="dark"] .project-editor {
 
-  background: var(--surface);
+  background: var(--surface);
 
-  border-color: var(--border);
+  border-color: var(--border);
 
 }
 
@@ -416,27 +416,27 @@
 
 :root[data-theme="dark"] select {
 
-  background: #202020;
+  background: #202020;
 
-  color: var(--text);
+  color: var(--text);
 
-  border-color: #383838;
+  border-color: #383838;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   GLOBAL
+   GLOBAL
 
-\========================================================= \*/
+========================================================= */
 
 
 
-\* {
+* {
 
-  box-sizing: border-box;
+  box-sizing: border-box;
 
 }
 
@@ -446,17 +446,17 @@ html,
 
 body,
 
-\#root {
+#root {
 
-  width: 100%;
+  width: 100%;
 
-  min-width: 320px;
+  min-width: 320px;
 
-  height: 100%;
+  height: 100%;
 
-  min-height: 100%;
+  min-height: 100%;
 
-  margin: 0;
+  margin: 0;
 
 }
 
@@ -464,9 +464,9 @@ body,
 
 body {
 
-  background: var(--bg);
+  background: var(--bg);
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -480,7 +480,7 @@ textarea,
 
 select {
 
-  font: inherit;
+  font: inherit;
 
 }
 
@@ -488,7 +488,7 @@ select {
 
 button {
 
-  cursor: pointer;
+  cursor: pointer;
 
 }
 
@@ -496,7 +496,7 @@ button {
 
 button:disabled {
 
-  cursor: not-allowed;
+  cursor: not-allowed;
 
 }
 
@@ -510,45 +510,45 @@ textarea:focus-visible,
 
 select:focus-visible {
 
-  outline: 3px solid rgba(215, 25, 32, 0.14);
+  outline: 3px solid rgba(215, 25, 32, 0.14);
 
-  outline-offset: 2px;
+  outline-offset: 2px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   APP LOADING
+   APP LOADING
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .app-loading {
 
-  width: 100%;
+  width: 100%;
 
-  height: 100vh;
-
-
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
+  height: 100vh;
 
 
 
-  gap: 12px;
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
 
 
 
-  background: var(--bg);
+  gap: 12px;
+
+
+
+  background: var(--bg);
 
 }
 
@@ -556,17 +556,17 @@ select:focus-visible {
 
 .app-loading img {
 
-  width: 55px !important;
+  width: 55px !important;
 
-  height: 55px !important;
+  height: 55px !important;
 
-  max-width: 55px !important;
+  max-width: 55px !important;
 
-  max-height: 55px !important;
+  max-height: 55px !important;
 
 
 
-  object-fit: contain;
+  object-fit: contain;
 
 }
 
@@ -574,53 +574,53 @@ select:focus-visible {
 
 .app-loading p {
 
-  margin: 0;
+  margin: 0;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
-  font-size: 14px;
+  font-size: 14px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   AUTH PAGE
+   AUTH PAGE
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .auth-page {
 
-  min-height: 100vh;
+  min-height: 100vh;
 
 
 
-  display: flex;
+  display: flex;
 
-  flex-direction: column;
+  flex-direction: column;
 
-  align-items: center;
+  align-items: center;
 
-  justify-content: center;
-
-
-
-  position: relative;
-
-  overflow: hidden;
+  justify-content: center;
 
 
 
-  padding: 32px 20px;
+  position: relative;
+
+  overflow: hidden;
 
 
 
-  background: var(--bg);
+  padding: 32px 20px;
+
+
+
+  background: var(--bg);
 
 }
 
@@ -628,21 +628,21 @@ select:focus-visible {
 
 .auth-glow {
 
-  position: absolute;
+  position: absolute;
 
 
 
-  border-radius: 50%;
+  border-radius: 50%;
 
 
 
-  filter: blur(90px);
+  filter: blur(90px);
 
 
 
-  pointer-events: none;
+  pointer-events: none;
 
-  opacity: 0.08;
+  opacity: 0.08;
 
 }
 
@@ -650,19 +650,19 @@ select:focus-visible {
 
 .glow-one {
 
-  width: 360px;
+  width: 360px;
 
-  height: 360px;
-
-
-
-  background: var(--red);
+  height: 360px;
 
 
 
-  top: -180px;
+  background: var(--red);
 
-  left: -120px;
+
+
+  top: -180px;
+
+  left: -120px;
 
 }
 
@@ -670,19 +670,19 @@ select:focus-visible {
 
 .glow-two {
 
-  width: 320px;
+  width: 320px;
 
-  height: 320px;
-
-
-
-  background: #ef4444;
+  height: 320px;
 
 
 
-  right: -140px;
+  background: #ef4444;
 
-  bottom: -150px;
+
+
+  right: -140px;
+
+  bottom: -150px;
 
 }
 
@@ -690,29 +690,29 @@ select:focus-visible {
 
 .auth-brand {
 
-  position: absolute;
+  position: absolute;
 
 
 
-  top: 28px;
+  top: 28px;
 
-  left: 36px;
-
-
-
-  display: flex;
-
-  align-items: center;
+  left: 36px;
 
 
 
-  gap: 8px;
+  display: flex;
+
+  align-items: center;
 
 
 
-  font-size: 20px;
+  gap: 8px;
 
-  letter-spacing: -0.04em;
+
+
+  font-size: 20px;
+
+  letter-spacing: -0.04em;
 
 }
 
@@ -720,17 +720,17 @@ select:focus-visible {
 
 .auth-brand img {
 
-  width: 36px !important;
+  width: 36px !important;
 
-  height: 36px !important;
+  height: 36px !important;
 
-  max-width: 36px !important;
+  max-width: 36px !important;
 
-  max-height: 36px !important;
+  max-height: 36px !important;
 
 
 
-  object-fit: contain;
+  object-fit: contain;
 
 }
 
@@ -738,7 +738,7 @@ select:focus-visible {
 
 .auth-brand strong {
 
-  font-weight: 800;
+  font-weight: 800;
 
 }
 
@@ -746,9 +746,9 @@ select:focus-visible {
 
 .auth-brand span {
 
-  color: var(--red);
+  color: var(--red);
 
-  font-weight: 800;
+  font-weight: 800;
 
 }
 
@@ -756,35 +756,35 @@ select:focus-visible {
 
 .auth-card {
 
-  position: relative;
+  position: relative;
 
-  z-index: 1;
-
-
-
-  width: min(440px, 100%);
+  z-index: 1;
 
 
 
-  padding: 38px;
+  width: min(440px, 100%);
 
 
 
-  background: var(--surface);
+  padding: 38px;
 
 
 
-  border: 1px solid var(--border);
-
-  border-radius: 22px;
+  background: var(--surface);
 
 
 
-  box-shadow:
+  border: 1px solid var(--border);
 
-    0 20px 70px rgba(20, 20, 20, 0.08),
+  border-radius: 22px;
 
-    0 4px 15px rgba(20, 20, 20, 0.03);
+
+
+  box-shadow:
+
+    0 20px 70px rgba(20, 20, 20, 0.08),
+
+    0 4px 15px rgba(20, 20, 20, 0.03);
 
 }
 
@@ -792,9 +792,9 @@ select:focus-visible {
 
 .auth-heading {
 
-  text-align: center;
+  text-align: center;
 
-  margin-bottom: 28px;
+  margin-bottom: 28px;
 
 }
 
@@ -802,17 +802,17 @@ select:focus-visible {
 
 .auth-heading h1 {
 
-  margin: 0 0 9px;
+  margin: 0 0 9px;
 
 
 
-  font-size: 28px;
+  font-size: 28px;
 
-  font-weight: 750;
+  font-weight: 750;
 
 
 
-  letter-spacing: -0.04em;
+  letter-spacing: -0.04em;
 
 }
 
@@ -820,17 +820,17 @@ select:focus-visible {
 
 .auth-heading p {
 
-  margin: 0;
+  margin: 0;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 14px;
+  font-size: 14px;
 
-  line-height: 1.5;
+  line-height: 1.5;
 
 }
 
@@ -838,7 +838,7 @@ select:focus-visible {
 
 .mobile-logo {
 
-  display: none;
+  display: none;
 
 }
 
@@ -846,19 +846,19 @@ select:focus-visible {
 
 .mobile-logo img {
 
-  width: 44px !important;
+  width: 44px !important;
 
-  height: 44px !important;
-
-
-
-  max-width: 44px !important;
-
-  max-height: 44px !important;
+  height: 44px !important;
 
 
 
-  object-fit: contain;
+  max-width: 44px !important;
+
+  max-height: 44px !important;
+
+
+
+  object-fit: contain;
 
 }
 
@@ -866,51 +866,51 @@ select:focus-visible {
 
 .auth-error {
 
-  padding: 11px 13px;
+  padding: 11px 13px;
 
 
 
-  margin-bottom: 18px;
+  margin-bottom: 18px;
 
 
 
-  border-radius: 10px;
+  border-radius: 10px;
 
 
 
-  background: #fff1f1;
+  background: #fff1f1;
 
-  border: 1px solid #ffd5d5;
-
-
-
-  color: #b91c1c;
+  border: 1px solid #ffd5d5;
 
 
 
-  font-size: 13px;
+  color: #b91c1c;
 
-  line-height: 1.4;
+
+
+  font-size: 13px;
+
+  line-height: 1.4;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   AUTH FORM
+   AUTH FORM
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .auth-card form {
 
-  display: flex;
+  display: flex;
 
-  flex-direction: column;
+  flex-direction: column;
 
-  gap: 17px;
+  gap: 17px;
 
 }
 
@@ -918,23 +918,23 @@ select:focus-visible {
 
 .auth-card label {
 
-  display: flex;
+  display: flex;
 
-  flex-direction: column;
-
-
-
-  gap: 8px;
+  flex-direction: column;
 
 
 
-  font-size: 13px;
-
-  font-weight: 600;
+  gap: 8px;
 
 
 
-  color: var(--text-secondary);
+  font-size: 13px;
+
+  font-weight: 600;
+
+
+
+  color: var(--text-secondary);
 
 }
 
@@ -942,37 +942,37 @@ select:focus-visible {
 
 .auth-card input {
 
-  width: 100%;
+  width: 100%;
 
-  height: 48px;
-
-
-
-  padding: 0 14px;
+  height: 48px;
 
 
 
-  border: 1px solid var(--border);
-
-  border-radius: 11px;
+  padding: 0 14px;
 
 
 
-  background: var(--surface);
+  border: 1px solid var(--border);
 
-  color: var(--text);
-
-
-
-  outline: none;
+  border-radius: 11px;
 
 
 
-  transition:
+  background: var(--surface);
 
-    border-color 0.18s,
+  color: var(--text);
 
-    box-shadow 0.18s;
+
+
+  outline: none;
+
+
+
+  transition:
+
+    border-color 0.18s,
+
+    box-shadow 0.18s;
 
 }
 
@@ -980,7 +980,7 @@ select:focus-visible {
 
 .auth-card input::placeholder {
 
-  color: var(--muted-light);
+  color: var(--muted-light);
 
 }
 
@@ -988,13 +988,13 @@ select:focus-visible {
 
 .auth-card input:focus {
 
-  border-color: var(--red);
+  border-color: var(--red);
 
 
 
-  box-shadow:
+  box-shadow:
 
-    0 0 0 3px rgba(215, 25, 32, 0.08);
+    0 0 0 3px rgba(215, 25, 32, 0.08);
 
 }
 
@@ -1002,7 +1002,7 @@ select:focus-visible {
 
 .password-wrap {
 
-  position: relative;
+  position: relative;
 
 }
 
@@ -1010,7 +1010,7 @@ select:focus-visible {
 
 .password-wrap input {
 
-  padding-right: 48px !important;
+  padding-right: 48px !important;
 
 }
 
@@ -1018,35 +1018,35 @@ select:focus-visible {
 
 .password-wrap button {
 
-  position: absolute;
+  position: absolute;
 
 
 
-  right: 7px;
+  right: 7px;
 
-  top: 7px;
-
-
-
-  width: 34px;
-
-  height: 34px;
+  top: 7px;
 
 
 
-  border: 0;
+  width: 34px;
+
+  height: 34px;
 
 
 
-  background: transparent;
+  border: 0;
 
 
 
-  color: var(--muted);
+  background: transparent;
 
 
 
-  border-radius: 8px;
+  color: var(--muted);
+
+
+
+  border-radius: 8px;
 
 }
 
@@ -1054,7 +1054,7 @@ select:focus-visible {
 
 .password-wrap button:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 }
 
@@ -1062,25 +1062,25 @@ select:focus-visible {
 
 .check {
 
-  flex-direction: row !important;
+  flex-direction: row !important;
 
-  align-items: center;
-
-
-
-  gap: 8px;
+  align-items: center;
 
 
 
-  font-weight: 500 !important;
+  gap: 8px;
 
 
 
-  color: var(--muted) !important;
+  font-weight: 500 !important;
 
 
 
-  font-size: 12px !important;
+  color: var(--muted) !important;
+
+
+
+  font-size: 12px !important;
 
 }
 
@@ -1088,17 +1088,17 @@ select:focus-visible {
 
 .check input {
 
-  width: 15px !important;
+  width: 15px !important;
 
-  height: 15px !important;
-
-
-
-  margin: 0;
+  height: 15px !important;
 
 
 
-  accent-color: var(--red);
+  margin: 0;
+
+
+
+  accent-color: var(--red);
 
 }
 
@@ -1106,43 +1106,43 @@ select:focus-visible {
 
 .primary-button {
 
-  width: 100%;
+  width: 100%;
 
-  height: 49px;
-
-
-
-  border: 0;
-
-  border-radius: 11px;
+  height: 49px;
 
 
 
-  background: var(--red);
+  border: 0;
 
-  color: white;
-
-
-
-  font-weight: 700;
+  border-radius: 11px;
 
 
 
-  display: flex;
+  background: var(--red);
 
-  align-items: center;
-
-  justify-content: center;
+  color: white;
 
 
 
-  transition:
+  font-weight: 700;
 
-    background 0.18s,
 
-    transform 0.18s,
 
-    box-shadow 0.18s;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+
+
+  transition:
+
+    background 0.18s,
+
+    transform 0.18s,
+
+    box-shadow 0.18s;
 
 }
 
@@ -1150,17 +1150,17 @@ select:focus-visible {
 
 .primary-button:hover:not(:disabled) {
 
-  background: var(--red-dark);
+  background: var(--red-dark);
 
 
 
-  transform: translateY(-1px);
+  transform: translateY(-1px);
 
 
 
-  box-shadow:
+  box-shadow:
 
-    0 10px 28px rgba(215, 25, 32, 0.25);
+    0 10px 28px rgba(215, 25, 32, 0.25);
 
 }
 
@@ -1168,7 +1168,7 @@ select:focus-visible {
 
 .primary-button:disabled {
 
-  opacity: 0.65;
+  opacity: 0.65;
 
 }
 
@@ -1176,19 +1176,19 @@ select:focus-visible {
 
 .switch-text {
 
-  margin: 22px 0 0;
+  margin: 22px 0 0;
 
 
 
-  text-align: center;
+  text-align: center;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 12px;
+  font-size: 12px;
 
 }
 
@@ -1196,23 +1196,23 @@ select:focus-visible {
 
 .link-button {
 
-  border: 0;
+  border: 0;
 
 
 
-  background: none;
+  background: none;
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 
 
-  padding: 0;
+  padding: 0;
 
 
 
-  font-size: inherit;
+  font-size: inherit;
 
 }
 
@@ -1220,7 +1220,7 @@ select:focus-visible {
 
 .link-button:hover {
 
-  text-decoration: underline;
+  text-decoration: underline;
 
 }
 
@@ -1228,7 +1228,7 @@ select:focus-visible {
 
 .link-button.strong {
 
-  font-weight: 700;
+  font-weight: 700;
 
 }
 
@@ -1236,95 +1236,95 @@ select:focus-visible {
 
 .auth-page footer {
 
-  position: absolute;
+  position: absolute;
 
 
 
-  bottom: 20px;
+  bottom: 20px;
 
 
 
-  color: var(--muted-light);
+  color: var(--muted-light);
 
 
 
-  font-size: 11px;
+  font-size: 11px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   MAIN APP SHELL
+   MAIN APP SHELL
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .app-shell {
 
-  width: 100%;
+  width: 100%;
 
-  height: 100vh;
-
-
-
-  display: flex;
+  height: 100vh;
 
 
 
-  overflow: hidden;
+  display: flex;
 
 
 
-  background: var(--bg);
+  overflow: hidden;
+
+
+
+  background: var(--bg);
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   SIDEBAR
+   SIDEBAR
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .sidebar {
 
-  width: 255px;
+  width: 255px;
 
-  min-width: 255px;
+  min-width: 255px;
 
-  height: 100vh;
-
-
-
-  display: flex;
-
-  flex-direction: column;
+  height: 100vh;
 
 
 
-  padding: 18px 14px;
+  display: flex;
+
+  flex-direction: column;
 
 
 
-  background: var(--surface);
+  padding: 18px 14px;
 
 
 
-  border-right: 1px solid var(--border);
+  background: var(--surface);
 
 
 
-  transition:
+  border-right: 1px solid var(--border);
 
-    width 0.2s ease,
 
-    transform 0.2s ease;
+
+  transition:
+
+    width 0.2s ease,
+
+    transform 0.2s ease;
 
 }
 
@@ -1332,31 +1332,31 @@ select:focus-visible {
 
 .brand-small {
 
-  height: 44px;
+  height: 44px;
 
 
 
-  display: flex;
+  display: flex;
 
-  align-items: center;
-
-
-
-  gap: 9px;
+  align-items: center;
 
 
 
-  padding: 4px 8px 20px;
+  gap: 9px;
 
 
 
-  font-size: 17px;
-
-  font-weight: 800;
+  padding: 4px 8px 20px;
 
 
 
-  letter-spacing: -0.04em;
+  font-size: 17px;
+
+  font-weight: 800;
+
+
+
+  letter-spacing: -0.04em;
 
 }
 
@@ -1364,25 +1364,25 @@ select:focus-visible {
 
 .brand-small img {
 
-  width: 30px !important;
+  width: 30px !important;
 
-  height: 30px !important;
-
-
-
-  min-width: 30px !important;
-
-  min-height: 30px !important;
+  height: 30px !important;
 
 
 
-  max-width: 30px !important;
+  min-width: 30px !important;
 
-  max-height: 30px !important;
+  min-height: 30px !important;
 
 
 
-  object-fit: contain;
+  max-width: 30px !important;
+
+  max-height: 30px !important;
+
+
+
+  object-fit: contain;
 
 }
 
@@ -1390,7 +1390,7 @@ select:focus-visible {
 
 .brand-small b {
 
-  color: var(--red);
+  color: var(--red);
 
 }
 
@@ -1398,95 +1398,95 @@ select:focus-visible {
 
 .mobile-close {
 
-  display: none;
+  display: none;
 
 
 
-  margin-left: auto;
+  margin-left: auto;
 
 
 
-  border: 0;
+  border: 0;
 
 
 
-  background: transparent;
+  background: transparent;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 24px;
+  font-size: 24px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   NEW CHAT
+   NEW CHAT
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .new-chat {
 
-  width: 100%;
+  width: 100%;
 
-  height: 44px;
-
-
-
-  margin-top: 12px;
+  height: 44px;
 
 
 
-  border: 1px solid var(--border);
+  margin-top: 12px;
 
 
 
-  background: var(--surface);
+  border: 1px solid var(--border);
 
 
 
-  border-radius: 11px;
+  background: var(--surface);
 
 
 
-  display: flex;
-
-  align-items: center;
+  border-radius: 11px;
 
 
 
-  gap: 8px;
+  display: flex;
+
+  align-items: center;
 
 
 
-  padding: 0 13px;
+  gap: 8px;
 
 
 
-  text-align: left;
+  padding: 0 13px;
 
 
 
-  font-weight: 650;
+  text-align: left;
 
 
 
-  color: var(--text);
+  font-weight: 650;
 
 
 
-  transition:
+  color: var(--text);
 
-    border-color 0.18s,
 
-    background 0.18s;
+
+  transition:
+
+    border-color 0.18s,
+
+    background 0.18s;
 
 }
 
@@ -1494,9 +1494,9 @@ select:focus-visible {
 
 .new-chat:hover {
 
-  border-color: var(--red);
+  border-color: var(--red);
 
-  background: var(--red-soft);
+  background: var(--red-soft);
 
 }
 
@@ -1504,35 +1504,35 @@ select:focus-visible {
 
 .button-icon {
 
-  font-size: 18px;
+  font-size: 18px;
 
-  line-height: 1;
+  line-height: 1;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   NAVIGATION
+   NAVIGATION
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .sidebar nav {
 
-  display: flex;
+  display: flex;
 
-  flex-direction: column;
-
-
-
-  gap: 3px;
+  flex-direction: column;
 
 
 
-  margin-top: 18px;
+  gap: 3px;
+
+
+
+  margin-top: 18px;
 
 }
 
@@ -1540,47 +1540,47 @@ select:focus-visible {
 
 .nav-item {
 
-  width: 100%;
+  width: 100%;
 
-  height: 40px;
-
-
-
-  border: 0;
+  height: 40px;
 
 
 
-  background: transparent;
+  border: 0;
 
 
 
-  border-radius: 9px;
+  background: transparent;
 
 
 
-  text-align: left;
+  border-radius: 9px;
 
 
 
-  padding: 0 12px;
+  text-align: left;
 
 
 
-  color: var(--muted);
+  padding: 0 12px;
 
 
 
-  display: flex;
-
-  align-items: center;
+  color: var(--muted);
 
 
 
-  transition:
+  display: flex;
 
-    background 0.15s,
+  align-items: center;
 
-    color 0.15s;
+
+
+  transition:
+
+    background 0.15s,
+
+    color 0.15s;
 
 }
 
@@ -1588,9 +1588,9 @@ select:focus-visible {
 
 .nav-item:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -1598,15 +1598,15 @@ select:focus-visible {
 
 .nav-item.active {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 
 
-  font-weight: 650;
+  font-weight: 650;
 
 }
 
@@ -1614,15 +1614,15 @@ select:focus-visible {
 
 .nav-icon {
 
-  width: 20px;
+  width: 20px;
 
 
 
-  display: inline-flex;
+  display: inline-flex;
 
-  align-items: center;
+  align-items: center;
 
-  justify-content: center;
+  justify-content: center;
 
 }
 
@@ -1630,41 +1630,41 @@ select:focus-visible {
 
 .nav-item span:last-child {
 
-  margin-left: 9px;
+  margin-left: 9px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   RECENT CHATS
+   RECENT CHATS
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .recent {
 
-  display: flex;
+  display: flex;
 
-  flex-direction: column;
-
-
-
-  margin-top: 25px;
+  flex-direction: column;
 
 
 
-  gap: 4px;
+  margin-top: 25px;
 
 
 
-  overflow-y: auto;
+  gap: 4px;
 
 
 
-  min-height: 0;
+  overflow-y: auto;
+
+
+
+  min-height: 0;
 
 }
 
@@ -1672,27 +1672,27 @@ select:focus-visible {
 
 .recent p {
 
-  font-size: 10px;
+  font-size: 10px;
 
 
 
-  text-transform: uppercase;
+  text-transform: uppercase;
 
 
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.08em;
 
 
 
-  color: var(--muted-light);
+  color: var(--muted-light);
 
 
 
-  margin: 0 10px 7px;
+  margin: 0 10px 7px;
 
 
 
-  font-weight: 700;
+  font-weight: 700;
 
 }
 
@@ -1700,15 +1700,15 @@ select:focus-visible {
 
 .empty-recent {
 
-  padding: 10px;
+  padding: 10px;
 
 
 
-  color: var(--muted-light);
+  color: var(--muted-light);
 
 
 
-  font-size: 12px;
+  font-size: 12px;
 
 }
 
@@ -1716,37 +1716,37 @@ select:focus-visible {
 
 .recent-chat {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  display: flex;
+  display: flex;
 
-  align-items: center;
-
-
-
-  min-width: 0;
+  align-items: center;
 
 
 
-  border: 0;
+  min-width: 0;
 
 
 
-  background: transparent;
+  border: 0;
 
 
 
-  border-radius: 9px;
+  background: transparent;
 
 
 
-  padding: 3px;
+  border-radius: 9px;
 
 
 
-  color: var(--muted);
+  padding: 3px;
+
+
+
+  color: var(--muted);
 
 }
 
@@ -1754,7 +1754,7 @@ select:focus-visible {
 
 .recent-chat.selected {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 }
 
@@ -1762,47 +1762,47 @@ select:focus-visible {
 
 .recent-chat-main {
 
-  min-width: 0;
+  min-width: 0;
 
-  flex: 1;
-
-
-
-  height: 37px;
+  flex: 1;
 
 
 
-  border: 0;
+  height: 37px;
 
 
 
-  background: transparent;
+  border: 0;
 
 
 
-  display: flex;
-
-  align-items: center;
+  background: transparent;
 
 
 
-  gap: 8px;
+  display: flex;
+
+  align-items: center;
 
 
 
-  padding: 0 8px;
+  gap: 8px;
 
 
 
-  color: inherit;
+  padding: 0 8px;
 
 
 
-  text-align: left;
+  color: inherit;
 
 
 
-  overflow: hidden;
+  text-align: left;
+
+
+
+  overflow: hidden;
 
 }
 
@@ -1810,15 +1810,15 @@ select:focus-visible {
 
 .recent-chat-main span:last-child {
 
-  overflow: hidden;
+  overflow: hidden;
 
 
 
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;
 
 
 
-  white-space: nowrap;
+  white-space: nowrap;
 
 }
 
@@ -1826,7 +1826,7 @@ select:focus-visible {
 
 .recent-chat:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 }
 
@@ -1834,41 +1834,41 @@ select:focus-visible {
 
 .recent-chat-menu {
 
-  width: 30px;
+  width: 30px;
 
-  height: 30px;
-
-
-
-  flex-shrink: 0;
+  height: 30px;
 
 
 
-  border: 0;
+  flex-shrink: 0;
 
 
 
-  border-radius: 7px;
+  border: 0;
 
 
 
-  background: transparent;
+  border-radius: 7px;
 
 
 
-  color: var(--muted);
+  background: transparent;
 
 
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
+  color: var(--muted);
 
 
 
-  opacity: 0.65;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+
+
+  opacity: 0.65;
 
 }
 
@@ -1876,39 +1876,39 @@ select:focus-visible {
 
 .recent-chat-menu:hover {
 
-  background: #ffe8e8;
+  background: #ffe8e8;
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 
 
-  opacity: 1;
+  opacity: 1;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   SIDEBAR BOTTOM
+   SIDEBAR BOTTOM
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .sidebar-bottom {
 
-  margin-top: auto;
+  margin-top: auto;
 
 
 
-  padding-top: 12px;
+  padding-top: 12px;
 
 
 
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-light);
 
 }
 
@@ -1916,17 +1916,17 @@ select:focus-visible {
 
 .user-profile {
 
-  display: flex;
+  display: flex;
 
-  align-items: center;
-
-
-
-  gap: 10px;
+  align-items: center;
 
 
 
-  padding: 8px;
+  gap: 10px;
+
+
+
+  padding: 8px;
 
 }
 
@@ -1934,39 +1934,39 @@ select:focus-visible {
 
 .avatar {
 
-  width: 34px;
+  width: 34px;
 
-  height: 34px;
-
-
-
-  flex-shrink: 0;
+  height: 34px;
 
 
 
-  border-radius: 50%;
+  flex-shrink: 0;
 
 
 
-  background: var(--red);
+  border-radius: 50%;
 
 
 
-  color: white;
+  background: var(--red);
 
 
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
+  color: white;
 
 
 
-  font-size: 13px;
+  display: flex;
 
-  font-weight: 700;
+  align-items: center;
+
+  justify-content: center;
+
+
+
+  font-size: 13px;
+
+  font-weight: 700;
 
 }
 
@@ -1974,17 +1974,17 @@ select:focus-visible {
 
 .user-info {
 
-  min-width: 0;
+  min-width: 0;
 
 
 
-  display: flex;
+  display: flex;
 
-  flex-direction: column;
+  flex-direction: column;
 
 
 
-  gap: 2px;
+  gap: 2px;
 
 }
 
@@ -1992,19 +1992,19 @@ select:focus-visible {
 
 .user-info strong {
 
-  font-size: 12px;
+  font-size: 12px;
 
 
 
-  white-space: nowrap;
+  white-space: nowrap;
 
 
 
-  overflow: hidden;
+  overflow: hidden;
 
 
 
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;
 
 }
 
@@ -2012,23 +2012,23 @@ select:focus-visible {
 
 .user-info span {
 
-  font-size: 10px;
+  font-size: 10px;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  white-space: nowrap;
+  white-space: nowrap;
 
 
 
-  overflow: hidden;
+  overflow: hidden;
 
 
 
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;
 
 }
 
@@ -2036,43 +2036,43 @@ select:focus-visible {
 
 .logout-button {
 
-  width: 100%;
+  width: 100%;
 
-  height: 38px;
-
-
-
-  border: 0;
+  height: 38px;
 
 
 
-  background: transparent;
+  border: 0;
 
 
 
-  border-radius: 9px;
+  background: transparent;
 
 
 
-  color: var(--muted);
+  border-radius: 9px;
 
 
 
-  display: flex;
-
-  align-items: center;
+  color: var(--muted);
 
 
 
-  padding: 0 10px;
+  display: flex;
+
+  align-items: center;
 
 
 
-  gap: 8px;
+  padding: 0 10px;
 
 
 
-  font-size: 12px;
+  gap: 8px;
+
+
+
+  font-size: 12px;
 
 }
 
@@ -2080,129 +2080,129 @@ select:focus-visible {
 
 .logout-button:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   SIDEBAR MOBILE
+   SIDEBAR MOBILE
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .sidebar-overlay {
 
-  display: none;
+  display: none;
 
 
 
-  position: fixed;
+  position: fixed;
 
 
 
-  inset: 0;
+  inset: 0;
 
 
 
-  z-index: 19;
+  z-index: 19;
 
 
 
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.28);
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   CHAT HOME
+   CHAT HOME
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .chat-home {
 
-  min-width: 0;
+  min-width: 0;
 
 
 
-  flex: 1;
+  flex: 1;
 
 
 
-  height: 100vh;
+  height: 100vh;
 
 
 
-  display: flex;
+  display: flex;
 
-  flex-direction: column;
-
-
-
-  position: relative;
+  flex-direction: column;
 
 
 
-  background: var(--bg);
+  position: relative;
+
+
+
+  background: var(--bg);
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   HEADER
+   HEADER
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .chat-header {
 
-  height: 64px;
+  height: 64px;
 
 
 
-  flex-shrink: 0;
+  flex-shrink: 0;
 
 
 
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  padding: 0 22px;
+  padding: 0 22px;
 
 
 
-  background: var(--surface);
+  background: var(--surface);
 
 
 
-  z-index: 5;
+  z-index: 5;
 
 }
 
@@ -2210,13 +2210,13 @@ select:focus-visible {
 
 .header-left {
 
-  display: flex;
+  display: flex;
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 10px;
+  gap: 10px;
 
 }
 
@@ -2224,33 +2224,33 @@ select:focus-visible {
 
 .mobile-menu-button {
 
-  display: none;
+  display: none;
 
 
 
-  width: 38px;
+  width: 38px;
 
-  height: 38px;
-
-
-
-  border: 0;
+  height: 38px;
 
 
 
-  background: transparent;
+  border: 0;
 
 
 
-  color: var(--text);
+  background: transparent;
 
 
 
-  border-radius: 9px;
+  color: var(--text);
 
 
 
-  font-size: 21px;
+  border-radius: 9px;
+
+
+
+  font-size: 21px;
 
 }
 
@@ -2258,7 +2258,7 @@ select:focus-visible {
 
 .mobile-menu-button:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 }
 
@@ -2266,25 +2266,25 @@ select:focus-visible {
 
 .header-title {
 
-  display: flex;
+  display: flex;
 
-  align-items: center;
-
-
-
-  gap: 8px;
+  align-items: center;
 
 
 
-  font-size: 16px;
+  gap: 8px;
 
 
 
-  font-weight: 750;
+  font-size: 16px;
 
 
 
-  letter-spacing: -0.03em;
+  font-weight: 750;
+
+
+
+  letter-spacing: -0.03em;
 
 }
 
@@ -2292,25 +2292,25 @@ select:focus-visible {
 
 .header-title img {
 
-  width: 27px !important;
+  width: 27px !important;
 
-  height: 27px !important;
-
-
-
-  min-width: 27px !important;
-
-  min-height: 27px !important;
+  height: 27px !important;
 
 
 
-  max-width: 27px !important;
+  min-width: 27px !important;
 
-  max-height: 27px !important;
+  min-height: 27px !important;
 
 
 
-  object-fit: contain;
+  max-width: 27px !important;
+
+  max-height: 27px !important;
+
+
+
+  object-fit: contain;
 
 }
 
@@ -2318,43 +2318,43 @@ select:focus-visible {
 
 .model-selector {
 
-  min-width: 145px;
+  min-width: 145px;
 
 
 
-  height: 38px;
+  height: 38px;
 
 
 
-  padding: 0 10px;
+  padding: 0 10px;
 
 
 
-  border: 1px solid var(--border);
+  border: 1px solid var(--border);
 
 
 
-  border-radius: 9px;
+  border-radius: 9px;
 
 
 
-  background: var(--surface);
+  background: var(--surface);
 
 
 
-  color: var(--text);
+  color: var(--text);
 
 
 
-  font-size: 12px;
+  font-size: 12px;
 
 
 
-  cursor: pointer;
+  cursor: pointer;
 
 
 
-  outline: none;
+  outline: none;
 
 }
 
@@ -2362,61 +2362,61 @@ select:focus-visible {
 
 .model-selector:hover {
 
-  border-color: #cfcfcf;
+  border-color: #cfcfcf;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   EMPTY CHAT
+   EMPTY CHAT
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .empty-chat {
 
-  flex: 1;
+  flex: 1;
 
 
 
-  min-height: 0;
+  min-height: 0;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  flex-direction: column;
+  flex-direction: column;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  justify-content: center;
+  justify-content: center;
 
 
 
-  text-align: center;
+  text-align: center;
 
 
 
-  padding:
+  padding:
 
-    30px
+    30px
 
-    20px
+    20px
 
-    150px;
+    150px;
 
 
 
-  overflow-y: auto;
+  overflow-y: auto;
 
 }
 
@@ -2424,29 +2424,29 @@ select:focus-visible {
 
 .welcome-logo {
 
-  width: 78px !important;
+  width: 78px !important;
 
-  height: 78px !important;
-
-
-
-  min-width: 78px !important;
-
-  min-height: 78px !important;
+  height: 78px !important;
 
 
 
-  max-width: 78px !important;
+  min-width: 78px !important;
 
-  max-height: 78px !important;
-
-
-
-  object-fit: contain;
+  min-height: 78px !important;
 
 
 
-  margin-bottom: 20px;
+  max-width: 78px !important;
+
+  max-height: 78px !important;
+
+
+
+  object-fit: contain;
+
+
+
+  margin-bottom: 20px;
 
 }
 
@@ -2454,27 +2454,27 @@ select:focus-visible {
 
 .empty-chat h1 {
 
-  margin: 0;
+  margin: 0;
 
 
 
-  font-size: 32px;
+  font-size: 32px;
 
 
 
-  line-height: 1.15;
+  line-height: 1.15;
 
 
 
-  font-weight: 750;
+  font-weight: 750;
 
 
 
-  letter-spacing: -0.045em;
+  letter-spacing: -0.045em;
 
 
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -2482,53 +2482,53 @@ select:focus-visible {
 
 .empty-chat p {
 
-  max-width: 550px;
+  max-width: 550px;
 
 
 
-  margin: 10px 0 28px;
+  margin: 10px 0 28px;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 14px;
+  font-size: 14px;
 
 
 
-  line-height: 1.6;
+  line-height: 1.6;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   QUICK ACTIONS
+   QUICK ACTIONS
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .quick-actions {
 
-  width: min(760px, 100%);
+  width: min(760px, 100%);
 
 
 
-  display: grid;
+  display: grid;
 
 
 
-  grid-template-columns:
+  grid-template-columns:
 
-    repeat(3, 1fr);
+    repeat(3, 1fr);
 
 
 
-  gap: 10px;
+  gap: 10px;
 
 }
 
@@ -2536,57 +2536,57 @@ select:focus-visible {
 
 .quick-actions button {
 
-  min-height: 68px;
+  min-height: 68px;
 
 
 
-  border: 1px solid var(--border);
+  border: 1px solid var(--border);
 
 
 
-  background: var(--surface);
+  background: var(--surface);
 
 
 
-  border-radius: 13px;
+  border-radius: 13px;
 
 
 
-  padding: 14px;
+  padding: 14px;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 10px;
+  gap: 10px;
 
 
 
-  color: var(--text);
+  color: var(--text);
 
 
 
-  text-align: left;
+  text-align: left;
 
 
 
-  font-size: 12px;
+  font-size: 12px;
 
 
 
-  transition:
+  transition:
 
-    border-color 0.18s,
+    border-color 0.18s,
 
-    background 0.18s,
+    background 0.18s,
 
-    transform 0.18s;
+    transform 0.18s;
 
 }
 
@@ -2594,15 +2594,15 @@ select:focus-visible {
 
 .quick-actions button:hover {
 
-  border-color: #e8aaaa;
+  border-color: #e8aaaa;
 
 
 
-  background: var(--red-soft);
+  background: var(--red-soft);
 
 
 
-  transform: translateY(-1px);
+  transform: translateY(-1px);
 
 }
 
@@ -2610,53 +2610,53 @@ select:focus-visible {
 
 .quick-actions button span {
 
-  color: var(--red);
+  color: var(--red);
 
 
 
-  font-size: 18px;
+  font-size: 18px;
 
 
 
-  flex-shrink: 0;
+  flex-shrink: 0;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   MESSAGES CONTAINER
+   MESSAGES CONTAINER
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .messages-container {
 
-  flex: 1;
+  flex: 1;
 
 
 
-  min-height: 0;
+  min-height: 0;
 
 
 
-  overflow-y: auto;
+  overflow-y: auto;
 
 
 
-  padding:
+  padding:
 
-    30px
+    30px
 
-    22px
+    22px
 
-    170px;
+    170px;
 
 
 
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;
 
 }
 
@@ -2664,23 +2664,23 @@ select:focus-visible {
 
 .messages-inner {
 
-  width: min(850px, 100%);
+  width: min(850px, 100%);
 
 
 
-  margin: 0 auto;
+  margin: 0 auto;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  flex-direction: column;
+  flex-direction: column;
 
 
 
-  gap: 24px;
+  gap: 24px;
 
 }
 
@@ -2688,63 +2688,63 @@ select:focus-visible {
 
 .history-loading {
 
-  text-align: center;
+  text-align: center;
 
 
 
-  padding: 30px;
+  padding: 30px;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 13px;
+  font-size: 13px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   MESSAGE ROW
+   MESSAGE ROW
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .message-row {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: flex-start;
+  align-items: flex-start;
 
 
 
-  gap: 11px;
-
-}
-
-
-
-.message-row\.user {
-
-  justify-content: flex-end;
+  gap: 11px;
 
 }
 
 
 
-.message-row\.assistant {
+.message-row.user {
 
-  justify-content: flex-start;
+  justify-content: flex-end;
+
+}
+
+
+
+.message-row.assistant {
+
+  justify-content: flex-start;
 
 }
 
@@ -2752,41 +2752,41 @@ select:focus-visible {
 
 .message-avatar {
 
-  width: 32px;
+  width: 32px;
 
-  height: 32px;
-
-
-
-  flex-shrink: 0;
+  height: 32px;
 
 
 
-  border-radius: 9px;
+  flex-shrink: 0;
 
 
 
-  display: flex;
+  border-radius: 9px;
 
 
 
-  align-items: center;
+  display: flex;
 
 
 
-  justify-content: center;
+  align-items: center;
 
 
 
-  background: var(--red-soft);
+  justify-content: center;
 
 
 
-  border: 1px solid #f2cccc;
+  background: var(--red-soft);
 
 
 
-  overflow: hidden;
+  border: 1px solid #f2cccc;
+
+
+
+  overflow: hidden;
 
 }
 
@@ -2794,19 +2794,19 @@ select:focus-visible {
 
 .message-avatar img {
 
-  width: 23px !important;
+  width: 23px !important;
 
-  height: 23px !important;
-
-
-
-  max-width: 23px !important;
-
-  max-height: 23px !important;
+  height: 23px !important;
 
 
 
-  object-fit: contain;
+  max-width: 23px !important;
+
+  max-height: 23px !important;
+
+
+
+  object-fit: contain;
 
 }
 
@@ -2814,19 +2814,19 @@ select:focus-visible {
 
 .message-content-wrapper {
 
-  max-width: 78%;
+  max-width: 78%;
 
 
 
-  min-width: 0;
+  min-width: 0;
 
 }
 
 
 
-.message-row\.user .message-content-wrapper {
+.message-row.user .message-content-wrapper {
 
-  max-width: 78%;
+  max-width: 78%;
 
 }
 
@@ -2834,107 +2834,107 @@ select:focus-visible {
 
 .message-name {
 
-  margin-bottom: 5px;
+  margin-bottom: 5px;
 
 
 
-  font-size: 11px;
+  font-size: 11px;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-weight: 650;
-
-}
-
-
-
-.message-row\.user .message-name {
-
-  text-align: right;
+  font-weight: 650;
 
 }
 
 
 
-/\* =========================================================
+.message-row.user .message-name {
 
-   MESSAGE BUBBLE
+  text-align: right;
 
-\========================================================= \*/
+}
+
+
+
+/* =========================================================
+
+   MESSAGE BUBBLE
+
+========================================================= */
 
 
 
 .message-bubble {
 
-  border: 1px solid var(--border);
+  border: 1px solid var(--border);
 
 
 
-  background: var(--surface);
+  background: var(--surface);
 
 
 
-  border-radius: 15px;
+  border-radius: 15px;
 
 
 
-  padding: 13px 15px;
+  padding: 13px 15px;
 
 
 
-  color: var(--text);
+  color: var(--text);
 
 
 
-  line-height: 1.65;
+  line-height: 1.65;
 
 
 
-  font-size: 14px;
+  font-size: 14px;
 
 
 
-  overflow-wrap: anywhere;
-
-}
-
-
-
-.message-row\.user .message-bubble {
-
-  background: #fff3f3;
-
-
-
-  border-color: #f0d0d0;
+  overflow-wrap: anywhere;
 
 }
 
 
 
-:root[data-theme="dark"] .message-row\.user .message-bubble {
+.message-row.user .message-bubble {
 
-  background: #291919;
+  background: #fff3f3;
+
+
+
+  border-color: #f0d0d0;
 
 }
 
 
 
-/\* =========================================================
+:root[data-theme="dark"] .message-row.user .message-bubble {
 
-   MESSAGE CONTENT
+  background: #291919;
 
-\========================================================= \*/
+}
+
+
+
+/* =========================================================
+
+   MESSAGE CONTENT
+
+========================================================= */
 
 
 
 .message-content {
 
-  line-height: 1.7;
+  line-height: 1.7;
 
 }
 
@@ -2942,13 +2942,13 @@ select:focus-visible {
 
 .message-content p {
 
-  margin:
+  margin:
 
-    0
+    0
 
-    0
+    0
 
-    10px;
+    10px;
 
 }
 
@@ -2956,7 +2956,7 @@ select:focus-visible {
 
 .message-content p:last-child {
 
-  margin-bottom: 0;
+  margin-bottom: 0;
 
 }
 
@@ -2968,17 +2968,17 @@ select:focus-visible {
 
 .message-content h3 {
 
-  margin:
+  margin:
 
-    18px
+    18px
 
-    0
+    0
 
-    8px;
+    8px;
 
 
 
-  line-height: 1.3;
+  line-height: 1.3;
 
 }
 
@@ -2986,7 +2986,7 @@ select:focus-visible {
 
 .message-content h1 {
 
-  font-size: 21px;
+  font-size: 21px;
 
 }
 
@@ -2994,7 +2994,7 @@ select:focus-visible {
 
 .message-content h2 {
 
-  font-size: 18px;
+  font-size: 18px;
 
 }
 
@@ -3002,7 +3002,7 @@ select:focus-visible {
 
 .message-content h3 {
 
-  font-size: 15px;
+  font-size: 15px;
 
 }
 
@@ -3012,17 +3012,17 @@ select:focus-visible {
 
 .message-content ol {
 
-  margin:
+  margin:
 
-    8px
+    8px
 
-    0
+    0
 
-    10px;
+    10px;
 
 
 
-  padding-left: 22px;
+  padding-left: 22px;
 
 }
 
@@ -3030,7 +3030,7 @@ select:focus-visible {
 
 .message-content li {
 
-  margin-bottom: 4px;
+  margin-bottom: 4px;
 
 }
 
@@ -3038,7 +3038,7 @@ select:focus-visible {
 
 .message-content strong {
 
-  font-weight: 700;
+  font-weight: 700;
 
 }
 
@@ -3046,83 +3046,83 @@ select:focus-visible {
 
 .inline-code {
 
-  padding:
+  padding:
 
-    2px
+    2px
 
-    6px;
-
-
-
-  border-radius: 5px;
+    6px;
 
 
 
-  background: #f1f1f1;
+  border-radius: 5px;
 
 
 
-  color: #b91c1c;
+  background: #f1f1f1;
 
 
 
-  font-size: 0.9em;
+  color: #b91c1c;
 
 
 
-  font-family:
+  font-size: 0.9em;
 
-    Consolas,
 
-    "Courier New",
 
-    monospace;
+  font-family:
+
+    Consolas,
+
+    "Courier New",
+
+    monospace;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   CODE BLOCK
+   CODE BLOCK
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .code-block-wrapper {
 
-  margin:
+  margin:
 
-    13px
+    13px
 
-    0;
-
-
-
-  overflow: hidden;
+    0;
 
 
 
-  border:
-
-    1px
-
-    solid
-
-    var(--border);
+  overflow: hidden;
 
 
 
-  border-radius: 10px;
+  border:
+
+    1px
+
+    solid
+
+    var(--border);
 
 
 
-  background: #181818;
+  border-radius: 10px;
 
 
 
-  color: #f4f4f4;
+  background: #181818;
+
+
+
+  color: #f4f4f4;
 
 }
 
@@ -3130,39 +3130,39 @@ select:focus-visible {
 
 .code-block-header {
 
-  height: 35px;
+  height: 35px;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  padding: 0 10px;
+  padding: 0 10px;
 
 
 
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #333;
 
 
 
-  background: #202020;
+  background: #202020;
 
 
 
-  font-size: 10px;
+  font-size: 10px;
 
 
 
-  color: #aaa;
+  color: #aaa;
 
 }
 
@@ -3170,27 +3170,27 @@ select:focus-visible {
 
 .code-block-header button {
 
-  border: 0;
+  border: 0;
 
 
 
-  border-radius: 6px;
+  border-radius: 6px;
 
 
 
-  background: #303030;
+  background: #303030;
 
 
 
-  color: #ddd;
+  color: #ddd;
 
 
 
-  padding: 5px 8px;
+  padding: 5px 8px;
 
 
 
-  font-size: 10px;
+  font-size: 10px;
 
 }
 
@@ -3198,11 +3198,11 @@ select:focus-visible {
 
 .code-block-header button:hover {
 
-  background: #414141;
+  background: #414141;
 
 
 
-  color: white;
+  color: white;
 
 }
 
@@ -3210,65 +3210,65 @@ select:focus-visible {
 
 .message-code-block {
 
-  margin: 0;
+  margin: 0;
 
 
 
-  padding: 14px;
+  padding: 14px;
 
 
 
-  overflow-x: auto;
+  overflow-x: auto;
 
 
 
-  font-family:
+  font-family:
 
-    Consolas,
+    Consolas,
 
-    "Courier New",
+    "Courier New",
 
-    monospace;
-
-
-
-  font-size: 12px;
+    monospace;
 
 
 
-  line-height: 1.65;
+  font-size: 12px;
 
 
 
-  white-space: pre;
+  line-height: 1.65;
+
+
+
+  white-space: pre;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   MARKDOWN TABLE
+   MARKDOWN TABLE
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .markdown-table-wrapper {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  overflow-x: auto;
+  overflow-x: auto;
 
 
 
-  margin:
+  margin:
 
-    13px
+    13px
 
-    0;
+    0;
 
 }
 
@@ -3276,15 +3276,15 @@ select:focus-visible {
 
 .markdown-table {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  border-collapse: collapse;
+  border-collapse: collapse;
 
 
 
-  font-size: 12px;
+  font-size: 12px;
 
 }
 
@@ -3294,15 +3294,15 @@ select:focus-visible {
 
 .markdown-table td {
 
-  border: 1px solid var(--border);
+  border: 1px solid var(--border);
 
 
 
-  padding: 8px 10px;
+  padding: 8px 10px;
 
 
 
-  text-align: left;
+  text-align: left;
 
 }
 
@@ -3310,47 +3310,47 @@ select:focus-visible {
 
 .markdown-table th {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 
 
-  font-weight: 700;
+  font-weight: 700;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   MESSAGE ACTIONS
+   MESSAGE ACTIONS
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .message-actions {
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 2px;
+  gap: 2px;
 
 
 
-  margin-top: 5px;
+  margin-top: 5px;
 
 }
 
 
 
-.message-row\.user .message-actions {
+.message-row.user .message-actions {
 
-  justify-content: flex-end;
+  justify-content: flex-end;
 
 }
 
@@ -3358,43 +3358,43 @@ select:focus-visible {
 
 .message-actions button {
 
-  border: 0;
+  border: 0;
 
 
 
-  background: transparent;
+  background: transparent;
 
 
 
-  color: var(--muted-light);
+  color: var(--muted-light);
 
 
 
-  padding:
+  padding:
 
-    5px
+    5px
 
-    7px;
-
-
-
-  border-radius: 7px;
+    7px;
 
 
 
-  display: inline-flex;
+  border-radius: 7px;
 
 
 
-  align-items: center;
+  display: inline-flex;
 
 
 
-  gap: 5px;
+  align-items: center;
 
 
 
-  font-size: 10px;
+  gap: 5px;
+
+
+
+  font-size: 10px;
 
 }
 
@@ -3402,11 +3402,11 @@ select:focus-visible {
 
 .message-actions button:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -3414,7 +3414,7 @@ select:focus-visible {
 
 .action-icon {
 
-  font-size: 13px;
+  font-size: 13px;
 
 }
 
@@ -3422,35 +3422,35 @@ select:focus-visible {
 
 .action-label {
 
-  font-size: 10px;
+  font-size: 10px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   TYPING INDICATOR
+   TYPING INDICATOR
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .typing-bubble {
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 5px;
+  gap: 5px;
 
 
 
-  min-height: 42px;
+  min-height: 42px;
 
 }
 
@@ -3458,27 +3458,27 @@ select:focus-visible {
 
 .typing-bubble span {
 
-  width: 6px;
+  width: 6px;
 
-  height: 6px;
-
-
-
-  border-radius: 50%;
+  height: 6px;
 
 
 
-  background: var(--muted);
+  border-radius: 50%;
 
 
 
-  animation:
+  background: var(--muted);
 
-    typing 1.2s
 
-    infinite
 
-    ease-in-out;
+  animation:
+
+    typing 1.2s
+
+    infinite
+
+    ease-in-out;
 
 }
 
@@ -3486,7 +3486,7 @@ select:focus-visible {
 
 .typing-bubble span:nth-child(2) {
 
-  animation-delay: 0.15s;
+  animation-delay: 0.15s;
 
 }
 
@@ -3494,7 +3494,7 @@ select:focus-visible {
 
 .typing-bubble span:nth-child(3) {
 
-  animation-delay: 0.3s;
+  animation-delay: 0.3s;
 
 }
 
@@ -3502,115 +3502,115 @@ select:focus-visible {
 
 @keyframes typing {
 
-  0%,
+  0%,
 
-  60%,
+  60%,
 
-  100% {
+  100% {
 
-    opacity: 0.3;
+    opacity: 0.3;
 
-    transform: translateY(0);
+    transform: translateY(0);
 
-  }
+  }
 
 
 
-  30% {
+  30% {
 
-    opacity: 1;
+    opacity: 1;
 
-    transform: translateY(-3px);
+    transform: translateY(-3px);
 
-  }
+  }
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   CHAT ERROR
+   CHAT ERROR
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .chat-error {
 
-  width: min(650px, 90%);
+  width: min(650px, 90%);
 
 
 
-  margin: 0 auto;
+  margin: 0 auto;
 
 
 
-  padding: 11px 13px;
+  padding: 11px 13px;
 
 
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    #f2cccc;
-
-
-
-  border-radius: 10px;
+    #f2cccc;
 
 
 
-  background: #fff2f2;
+  border-radius: 10px;
 
 
 
-  color: #b91c1c;
+  background: #fff2f2;
 
 
 
-  font-size: 12px;
+  color: #b91c1c;
+
+
+
+  font-size: 12px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   SOURCE PANEL
+   SOURCE PANEL
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .source-panel {
 
-  margin-top: 12px;
+  margin-top: 12px;
 
 
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
-
-
-
-  border-radius: 10px;
+    var(--border);
 
 
 
-  overflow: hidden;
+  border-radius: 10px;
 
 
 
-  background: var(--surface);
+  overflow: hidden;
+
+
+
+  background: var(--surface);
 
 }
 
@@ -3618,51 +3618,51 @@ select:focus-visible {
 
 .source-toggle {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  min-height: 38px;
+  min-height: 38px;
 
 
 
-  border: 0;
+  border: 0;
 
 
 
-  background: transparent;
+  background: transparent;
 
 
 
-  color: var(--text);
+  color: var(--text);
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  padding:
+  padding:
 
-    0
+    0
 
-    11px;
-
-
-
-  font-size: 11px;
+    11px;
 
 
 
-  font-weight: 600;
+  font-size: 11px;
+
+
+
+  font-weight: 600;
 
 }
 
@@ -3670,7 +3670,7 @@ select:focus-visible {
 
 .source-toggle:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 }
 
@@ -3678,19 +3678,19 @@ select:focus-visible {
 
 .source-list {
 
-  display: flex;
+  display: flex;
 
 
 
-  flex-direction: column;
+  flex-direction: column;
 
 
 
-  gap: 7px;
+  gap: 7px;
 
 
 
-  padding: 8px;
+  padding: 8px;
 
 }
 
@@ -3698,25 +3698,25 @@ select:focus-visible {
 
 .source-card {
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
-
-
-
-  border-radius: 9px;
+    var(--border);
 
 
 
-  background: var(--surface);
+  border-radius: 9px;
 
 
 
-  overflow: hidden;
+  background: var(--surface);
+
+
+
+  overflow: hidden;
 
 }
 
@@ -3724,27 +3724,27 @@ select:focus-visible {
 
 .source-card-top {
 
-  min-height: 48px;
+  min-height: 48px;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  gap: 10px;
+  gap: 10px;
 
 
 
-  padding: 8px 10px;
+  padding: 8px 10px;
 
 }
 
@@ -3752,19 +3752,19 @@ select:focus-visible {
 
 .source-file {
 
-  min-width: 0;
+  min-width: 0;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 8px;
+  gap: 8px;
 
 }
 
@@ -3772,45 +3772,45 @@ select:focus-visible {
 
 .pdf-icon {
 
-  width: 30px;
+  width: 30px;
 
-  height: 30px;
-
-
-
-  flex-shrink: 0;
+  height: 30px;
 
 
 
-  border-radius: 6px;
+  flex-shrink: 0;
 
 
 
-  background: #ffe8e8;
+  border-radius: 6px;
 
 
 
-  color: var(--red);
+  background: #ffe8e8;
 
 
 
-  display: flex;
+  color: var(--red);
 
 
 
-  align-items: center;
+  display: flex;
 
 
 
-  justify-content: center;
+  align-items: center;
 
 
 
-  font-size: 8px;
+  justify-content: center;
 
 
 
-  font-weight: 800;
+  font-size: 8px;
+
+
+
+  font-weight: 800;
 
 }
 
@@ -3818,19 +3818,19 @@ select:focus-visible {
 
 .source-file div {
 
-  min-width: 0;
+  min-width: 0;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  flex-direction: column;
+  flex-direction: column;
 
 
 
-  gap: 2px;
+  gap: 2px;
 
 }
 
@@ -3838,23 +3838,23 @@ select:focus-visible {
 
 .source-file strong {
 
-  font-size: 11px;
+  font-size: 11px;
 
 
 
-  white-space: nowrap;
+  white-space: nowrap;
 
 
 
-  overflow: hidden;
+  overflow: hidden;
 
 
 
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;
 
 
 
-  max-width: 300px;
+  max-width: 300px;
 
 }
 
@@ -3862,11 +3862,11 @@ select:focus-visible {
 
 .source-file span {
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 10px;
+  font-size: 10px;
 
 }
 
@@ -3874,41 +3874,41 @@ select:focus-visible {
 
 .view-excerpt-button {
 
-  flex-shrink: 0;
+  flex-shrink: 0;
 
 
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
-
-
-
-  background: var(--surface);
+    var(--border);
 
 
 
-  color: var(--muted);
+  background: var(--surface);
 
 
 
-  border-radius: 7px;
+  color: var(--muted);
 
 
 
-  padding:
-
-    6px
-
-    8px;
+  border-radius: 7px;
 
 
 
-  font-size: 9px;
+  padding:
+
+    6px
+
+    8px;
+
+
+
+  font-size: 9px;
 
 }
 
@@ -3916,11 +3916,11 @@ select:focus-visible {
 
 .view-excerpt-button:hover {
 
-  border-color: var(--red);
+  border-color: var(--red);
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 }
 
@@ -3928,29 +3928,29 @@ select:focus-visible {
 
 .source-excerpt {
 
-  margin:
+  margin:
 
-    0
+    0
 
-    8px
+    8px
 
-    8px;
-
-
-
-  padding: 10px;
+    8px;
 
 
 
-  border-radius: 8px;
+  padding: 10px;
 
 
 
-  background: var(--surface-2);
+  border-radius: 8px;
 
 
 
-  border: 1px solid var(--border);
+  background: var(--surface-2);
+
+
+
+  border: 1px solid var(--border);
 
 }
 
@@ -3958,27 +3958,27 @@ select:focus-visible {
 
 .excerpt-header {
 
-  display: flex;
+  display: flex;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  margin-bottom: 7px;
+  margin-bottom: 7px;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 10px;
+  font-size: 10px;
 
 }
 
@@ -3986,19 +3986,19 @@ select:focus-visible {
 
 .excerpt-header button {
 
-  border: 0;
+  border: 0;
 
 
 
-  background: transparent;
+  background: transparent;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 16px;
+  font-size: 16px;
 
 }
 
@@ -4006,77 +4006,77 @@ select:focus-visible {
 
 .source-excerpt p {
 
-  margin: 0;
+  margin: 0;
 
 
 
-  color: var(--text-secondary);
+  color: var(--text-secondary);
 
 
 
-  font-size: 11px;
+  font-size: 11px;
 
 
 
-  line-height: 1.55;
+  line-height: 1.55;
 
 
 
-  white-space: pre-wrap;
+  white-space: pre-wrap;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   COMPOSER AREA
+   COMPOSER AREA
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .composer-area {
 
-  position: absolute;
+  position: absolute;
 
 
 
-  left: 0;
+  left: 0;
 
-  right: 0;
-
-
-
-  bottom: 0;
+  right: 0;
 
 
 
-  z-index: 4;
+  bottom: 0;
 
 
 
-  padding:
-
-    18px
-
-    20px
-
-    12px;
+  z-index: 4;
 
 
 
-  background:
+  padding:
 
-    linear-gradient(
+    18px
 
-      to top,
+    20px
 
-      var(--bg) 70%,
+    12px;
 
-      transparent
 
-    );
+
+  background:
+
+    linear-gradient(
+
+      to top,
+
+      var(--bg) 70%,
+
+      transparent
+
+    );
 
 }
 
@@ -4084,65 +4084,65 @@ select:focus-visible {
 
 .composer-wrapper {
 
-  width: min(850px, 100%);
+  width: min(850px, 100%);
 
 
 
-  margin: 0 auto;
+  margin: 0 auto;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   REPLY PREVIEW
+   REPLY PREVIEW
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .reply-preview {
 
-  margin-bottom: 8px;
+  margin-bottom: 8px;
 
 
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
-
-
-
-  border-radius: 10px;
+    var(--border);
 
 
 
-  background: var(--surface);
+  border-radius: 10px;
 
 
 
-  padding: 9px 11px;
+  background: var(--surface);
 
 
 
-  display: flex;
+  padding: 9px 11px;
 
 
 
-  align-items: center;
+  display: flex;
 
 
 
-  justify-content: space-between;
+  align-items: center;
 
 
 
-  gap: 10px;
+  justify-content: space-between;
+
+
+
+  gap: 10px;
 
 }
 
@@ -4150,7 +4150,7 @@ select:focus-visible {
 
 .reply-preview-content {
 
-  min-width: 0;
+  min-width: 0;
 
 }
 
@@ -4158,19 +4158,19 @@ select:focus-visible {
 
 .reply-preview-label {
 
-  font-size: 10px;
+  font-size: 10px;
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 
 
-  font-weight: 700;
+  font-weight: 700;
 
 
 
-  margin-bottom: 2px;
+  margin-bottom: 2px;
 
 }
 
@@ -4178,23 +4178,23 @@ select:focus-visible {
 
 .reply-preview-text {
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 11px;
+  font-size: 11px;
 
 
 
-  white-space: nowrap;
+  white-space: nowrap;
 
 
 
-  overflow: hidden;
+  overflow: hidden;
 
 
 
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;
 
 }
 
@@ -4202,71 +4202,71 @@ select:focus-visible {
 
 .reply-preview-close {
 
-  border: 0;
+  border: 0;
 
 
 
-  background: transparent;
+  background: transparent;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 17px;
+  font-size: 17px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   COMPOSER
+   COMPOSER
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .composer {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    #dcdcdc;
-
-
-
-  border-radius: 18px;
+    #dcdcdc;
 
 
 
-  background: var(--surface);
+  border-radius: 18px;
 
 
 
-  padding: 8px;
+  background: var(--surface);
 
 
 
-  box-shadow:
-
-    0 8px 30px rgba(0, 0, 0, 0.07);
+  padding: 8px;
 
 
 
-  transition:
+  box-shadow:
 
-    border-color 0.18s,
+    0 8px 30px rgba(0, 0, 0, 0.07);
 
-    box-shadow 0.18s;
+
+
+  transition:
+
+    border-color 0.18s,
+
+    box-shadow 0.18s;
 
 }
 
@@ -4274,15 +4274,15 @@ select:focus-visible {
 
 .composer:focus-within {
 
-  border-color: #d9a2a2;
+  border-color: #d9a2a2;
 
 
 
-  box-shadow:
+  box-shadow:
 
-    0 8px 30px
+    0 8px 30px
 
-    rgba(215, 25, 32, 0.08);
+    rgba(215, 25, 32, 0.08);
 
 }
 
@@ -4290,47 +4290,47 @@ select:focus-visible {
 
 .composer textarea {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  min-height: 43px;
+  min-height: 43px;
 
-  max-height: 150px;
-
-
-
-  border: 0;
-
-  outline: 0;
+  max-height: 150px;
 
 
 
-  resize: none;
+  border: 0;
+
+  outline: 0;
 
 
 
-  background: transparent;
+  resize: none;
 
 
 
-  color: var(--text);
+  background: transparent;
 
 
 
-  padding:
-
-    9px
-
-    10px;
+  color: var(--text);
 
 
 
-  line-height: 20px;
+  padding:
+
+    9px
+
+    10px;
 
 
 
-  font-size: 13px;
+  line-height: 20px;
+
+
+
+  font-size: 13px;
 
 }
 
@@ -4338,45 +4338,45 @@ select:focus-visible {
 
 .composer textarea::placeholder {
 
-  color: var(--muted-light);
+  color: var(--muted-light);
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   COMPOSER BOTTOM ROW
+   COMPOSER BOTTOM ROW
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .composer-bottom {
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  gap: 8px;
+  gap: 8px;
 
 
 
-  padding:
+  padding:
 
-    2px
+    2px
 
-    2px
+    2px
 
-    0;
+    0;
 
 }
 
@@ -4384,19 +4384,19 @@ select:focus-visible {
 
 .composer-left {
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 5px;
+  gap: 5px;
 
 
 
-  min-width: 0;
+  min-width: 0;
 
 }
 
@@ -4404,15 +4404,15 @@ select:focus-visible {
 
 .composer-right {
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 5px;
+  gap: 5px;
 
 }
 
@@ -4420,45 +4420,45 @@ select:focus-visible {
 
 .composer-attach {
 
-  width: 36px;
+  width: 36px;
 
-  height: 36px;
-
-
-
-  flex-shrink: 0;
+  height: 36px;
 
 
 
-  border: 0;
+  flex-shrink: 0;
 
 
 
-  border-radius: 9px;
+  border: 0;
 
 
 
-  background: transparent;
+  border-radius: 9px;
 
 
 
-  color: var(--muted);
+  background: transparent;
 
 
 
-  display: flex;
+  color: var(--muted);
 
 
 
-  align-items: center;
+  display: flex;
 
 
 
-  justify-content: center;
+  align-items: center;
 
 
 
-  font-size: 20px;
+  justify-content: center;
+
+
+
+  font-size: 20px;
 
 }
 
@@ -4466,11 +4466,11 @@ select:focus-visible {
 
 .composer-attach:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -4478,53 +4478,53 @@ select:focus-visible {
 
 .send-button {
 
-  width: 36px;
+  width: 36px;
 
-  height: 36px;
-
-
-
-  flex-shrink: 0;
+  height: 36px;
 
 
 
-  border: 0;
+  flex-shrink: 0;
 
 
 
-  border-radius: 10px;
+  border: 0;
 
 
 
-  background: #e8e8e8;
+  border-radius: 10px;
 
 
 
-  color: #999;
+  background: #e8e8e8;
 
 
 
-  display: flex;
+  color: #999;
 
 
 
-  align-items: center;
+  display: flex;
 
 
 
-  justify-content: center;
+  align-items: center;
 
 
 
-  font-size: 17px;
+  justify-content: center;
 
 
 
-  transition:
+  font-size: 17px;
 
-    background 0.15s,
 
-    color 0.15s;
+
+  transition:
+
+    background 0.15s,
+
+    color 0.15s;
 
 }
 
@@ -4532,11 +4532,11 @@ select:focus-visible {
 
 .send-button.ready {
 
-  background: var(--red);
+  background: var(--red);
 
 
 
-  color: white;
+  color: white;
 
 }
 
@@ -4544,51 +4544,51 @@ select:focus-visible {
 
 .send-button.ready:hover {
 
-  background: var(--red-dark);
+  background: var(--red-dark);
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   DOCUMENT CHIPS
+   DOCUMENT CHIPS
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .composer-documents {
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 6px;
+  gap: 6px;
 
 
 
-  min-width: 0;
+  min-width: 0;
 
 
 
-  max-width: 100%;
+  max-width: 100%;
 
 
 
-  overflow-x: auto;
+  overflow-x: auto;
 
 
 
-  padding:
+  padding:
 
-    3px
+    3px
 
-    0;
+    0;
 
 }
 
@@ -4596,61 +4596,61 @@ select:focus-visible {
 
 .attached-document {
 
-  max-width: 240px;
+  max-width: 240px;
 
 
 
-  flex-shrink: 0;
+  flex-shrink: 0;
 
 
 
-  height: 30px;
+  height: 30px;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 5px;
+  gap: 5px;
 
 
 
-  padding:
+  padding:
 
-    0
+    0
 
-    7px;
-
-
-
-  border:
-
-    1px
-
-    solid
-
-    var(--border);
+    7px;
 
 
 
-  border-radius: 8px;
+  border:
+
+    1px
+
+    solid
+
+    var(--border);
 
 
 
-  background: var(--surface-2);
+  border-radius: 8px;
 
 
 
-  color: var(--text-secondary);
+  background: var(--surface-2);
 
 
 
-  font-size: 10px;
+  color: var(--text-secondary);
+
+
+
+  font-size: 10px;
 
 }
 
@@ -4658,15 +4658,15 @@ select:focus-visible {
 
 .attached-document-icon {
 
-  color: var(--red);
+  color: var(--red);
 
 
 
-  font-weight: 800;
+  font-weight: 800;
 
 
 
-  font-size: 8px;
+  font-size: 8px;
 
 }
 
@@ -4674,19 +4674,19 @@ select:focus-visible {
 
 .attached-document-name {
 
-  max-width: 125px;
+  max-width: 125px;
 
 
 
-  overflow: hidden;
+  overflow: hidden;
 
 
 
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;
 
 
 
-  white-space: nowrap;
+  white-space: nowrap;
 
 }
 
@@ -4694,11 +4694,11 @@ select:focus-visible {
 
 .attached-document-pages {
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  flex-shrink: 0;
+  flex-shrink: 0;
 
 }
 
@@ -4706,41 +4706,41 @@ select:focus-visible {
 
 .attached-document-delete {
 
-  width: 18px;
+  width: 18px;
 
-  height: 18px;
-
-
-
-  border: 0;
+  height: 18px;
 
 
 
-  border-radius: 5px;
+  border: 0;
 
 
 
-  background: transparent;
+  border-radius: 5px;
 
 
 
-  color: var(--muted);
+  background: transparent;
 
 
 
-  display: flex;
+  color: var(--muted);
 
 
 
-  align-items: center;
+  display: flex;
 
 
 
-  justify-content: center;
+  align-items: center;
 
 
 
-  padding: 0;
+  justify-content: center;
+
+
+
+  padding: 0;
 
 }
 
@@ -4748,21 +4748,21 @@ select:focus-visible {
 
 .attached-document-delete:hover {
 
-  background: #ffe3e3;
+  background: #ffe3e3;
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   DISCLAIMER
+   DISCLAIMER
 
-\========================================================= \*/
+========================================================= */
 
 
 
@@ -4770,63 +4770,63 @@ select:focus-visible {
 
 .disclaimer {
 
-  margin:
+  margin:
 
-    7px
+    7px
 
-    0
+    0
 
-    0;
-
-
-
-  text-align: center;
+    0;
 
 
 
-  color: var(--muted-light);
+  text-align: center;
 
 
 
-  font-size: 9px;
+  color: var(--muted-light);
+
+
+
+  font-size: 9px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   PROJECTS / SETTINGS PAGES
+   PROJECTS / SETTINGS PAGES
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .aurex-panel-page {
 
-  width: min(1120px, 100%);
+  width: min(1120px, 100%);
 
 
 
-  height: 100%;
+  height: 100%;
 
 
 
-  margin: 0 auto;
+  margin: 0 auto;
 
 
 
-  padding:
+  padding:
 
-    42px
+    42px
 
-    42px
+    42px
 
-    80px;
+    80px;
 
 
 
-  overflow-y: auto;
+  overflow-y: auto;
 
 }
 
@@ -4834,23 +4834,23 @@ select:focus-visible {
 
 .panel-heading {
 
-  display: flex;
+  display: flex;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  align-items: flex-start;
+  align-items: flex-start;
 
 
 
-  gap: 24px;
+  gap: 24px;
 
 
 
-  margin-bottom: 28px;
+  margin-bottom: 28px;
 
 }
 
@@ -4858,21 +4858,21 @@ select:focus-visible {
 
 .panel-heading h2 {
 
-  margin:
+  margin:
 
-    5px
+    5px
 
-    0
+    0
 
-    6px;
-
-
-
-  font-size: 30px;
+    6px;
 
 
 
-  letter-spacing: -0.04em;
+  font-size: 30px;
+
+
+
+  letter-spacing: -0.04em;
 
 }
 
@@ -4880,15 +4880,15 @@ select:focus-visible {
 
 .panel-heading p {
 
-  margin: 0;
+  margin: 0;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 13px;
+  font-size: 13px;
 
 }
 
@@ -4896,23 +4896,23 @@ select:focus-visible {
 
 .eyebrow {
 
-  font-size: 11px;
+  font-size: 11px;
 
 
 
-  letter-spacing: 0.12em;
+  letter-spacing: 0.12em;
 
 
 
-  font-weight: 700;
+  font-weight: 700;
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 
 
-  text-transform: uppercase;
+  text-transform: uppercase;
 
 }
 
@@ -4920,55 +4920,55 @@ select:focus-visible {
 
 .primary-button.small {
 
-  width: auto;
+  width: auto;
 
 
 
-  padding:
+  padding:
 
-    10px
+    10px
 
-    15px;
-
-
-
-  display: flex;
+    15px;
 
 
 
-  align-items: center;
+  display: flex;
 
 
 
-  gap: 8px;
+  align-items: center;
+
+
+
+  gap: 8px;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   PROJECT LAYOUT
+   PROJECT LAYOUT
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .project-layout {
 
-  display: grid;
+  display: grid;
 
 
 
-  grid-template-columns:
+  grid-template-columns:
 
-    minmax(300px, 0.9fr)
+    minmax(300px, 0.9fr)
 
-    minmax(360px, 1.1fr);
+    minmax(360px, 1.1fr);
 
 
 
-  gap: 18px;
+  gap: 18px;
 
 }
 
@@ -4978,15 +4978,15 @@ select:focus-visible {
 
 .project-editor {
 
-  display: flex;
+  display: flex;
 
 
 
-  flex-direction: column;
+  flex-direction: column;
 
 
 
-  gap: 10px;
+  gap: 10px;
 
 }
 
@@ -4994,33 +4994,33 @@ select:focus-visible {
 
 .project-card {
 
-  display: flex;
+  display: flex;
 
 
 
-  gap: 8px;
+  gap: 8px;
 
 
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
-
-
-
-  border-radius: 14px;
+    var(--border);
 
 
 
-  background: var(--surface);
+  border-radius: 14px;
 
 
 
-  padding: 5px;
+  background: var(--surface);
+
+
+
+  padding: 5px;
 
 }
 
@@ -5028,13 +5028,13 @@ select:focus-visible {
 
 .project-card.active {
 
-  border-color: var(--red);
+  border-color: var(--red);
 
 
 
-  box-shadow:
+  box-shadow:
 
-    0 0 0 1px var(--red);
+    0 0 0 1px var(--red);
 
 }
 
@@ -5042,47 +5042,47 @@ select:focus-visible {
 
 .project-card-main {
 
-  flex: 1;
+  flex: 1;
 
 
 
-  min-width: 0;
+  min-width: 0;
 
 
 
-  text-align: left;
+  text-align: left;
 
 
 
-  border: 0;
+  border: 0;
 
 
 
-  background: transparent;
+  background: transparent;
 
 
 
-  padding: 12px;
+  padding: 12px;
 
 
 
-  cursor: pointer;
+  cursor: pointer;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  flex-direction: column;
+  flex-direction: column;
 
 
 
-  gap: 4px;
+  gap: 4px;
 
 
 
-  color: inherit;
+  color: inherit;
 
 }
 
@@ -5090,7 +5090,7 @@ select:focus-visible {
 
 .project-card-main strong {
 
-  font-size: 15px;
+  font-size: 15px;
 
 }
 
@@ -5100,7 +5100,7 @@ select:focus-visible {
 
 .project-card-main small {
 
-  color: var(--muted);
+  color: var(--muted);
 
 }
 
@@ -5108,19 +5108,19 @@ select:focus-visible {
 
 .project-card-actions {
 
-  display: flex;
+  display: flex;
 
 
 
-  align-items: flex-start;
+  align-items: flex-start;
 
 
 
-  gap: 4px;
+  gap: 4px;
 
 
 
-  padding: 8px;
+  padding: 8px;
 
 }
 
@@ -5128,27 +5128,27 @@ select:focus-visible {
 
 .project-card-actions button {
 
-  border: 0;
+  border: 0;
 
 
 
-  background: transparent;
+  background: transparent;
 
 
 
-  cursor: pointer;
+  cursor: pointer;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  padding: 7px;
+  padding: 7px;
 
 
 
-  border-radius: 7px;
+  border-radius: 7px;
 
 }
 
@@ -5156,11 +5156,11 @@ select:focus-visible {
 
 .project-card-actions button:hover {
 
-  background: var(--surface-3);
+  background: var(--surface-3);
 
 
 
-  color: var(--text);
+  color: var(--text);
 
 }
 
@@ -5168,41 +5168,41 @@ select:focus-visible {
 
 .project-card-actions .danger-icon:hover {
 
-  color: var(--red);
+  color: var(--red);
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   PROJECT EDITOR
+   PROJECT EDITOR
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .project-editor {
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
-
-
-
-  border-radius: 16px;
+    var(--border);
 
 
 
-  padding: 20px;
+  border-radius: 16px;
 
 
 
-  background: var(--surface);
+  padding: 20px;
+
+
+
+  background: var(--surface);
 
 }
 
@@ -5210,15 +5210,15 @@ select:focus-visible {
 
 .editor-title {
 
-  display: flex;
+  display: flex;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  align-items: center;
+  align-items: center;
 
 }
 
@@ -5226,7 +5226,7 @@ select:focus-visible {
 
 .editor-title h3 {
 
-  margin: 0 0 10px;
+  margin: 0 0 10px;
 
 }
 
@@ -5234,11 +5234,11 @@ select:focus-visible {
 
 .editor-title span {
 
-  font-size: 12px;
+  font-size: 12px;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 }
 
@@ -5246,23 +5246,23 @@ select:focus-visible {
 
 .project-editor label {
 
-  display: flex;
+  display: flex;
 
 
 
-  flex-direction: column;
+  flex-direction: column;
 
 
 
-  gap: 6px;
+  gap: 6px;
 
 
 
-  font-size: 13px;
+  font-size: 13px;
 
 
 
-  font-weight: 600;
+  font-weight: 600;
 
 }
 
@@ -5274,45 +5274,45 @@ select:focus-visible {
 
 .settings-card select {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  box-sizing: border-box;
+  box-sizing: border-box;
 
 
 
-  padding:
+  padding:
 
-    11px
+    11px
 
-    12px;
-
-
-
-  border:
-
-    1px
-
-    solid
-
-    var(--border);
+    12px;
 
 
 
-  border-radius: 10px;
+  border:
+
+    1px
+
+    solid
+
+    var(--border);
 
 
 
-  background: var(--surface);
+  border-radius: 10px;
 
 
 
-  color: inherit;
+  background: var(--surface);
 
 
 
-  font: inherit;
+  color: inherit;
+
+
+
+  font: inherit;
 
 }
 
@@ -5320,7 +5320,7 @@ select:focus-visible {
 
 .project-editor textarea {
 
-  resize: vertical;
+  resize: vertical;
 
 }
 
@@ -5328,21 +5328,21 @@ select:focus-visible {
 
 .project-files {
 
-  margin-top: 12px;
+  margin-top: 12px;
 
 
 
-  border-top:
+  border-top:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
+    var(--border);
 
 
 
-  padding-top: 16px;
+  padding-top: 16px;
 
 }
 
@@ -5350,13 +5350,13 @@ select:focus-visible {
 
 .project-files h3 {
 
-  margin:
+  margin:
 
-    0
+    0
 
-    0
+    0
 
-    5px;
+    5px;
 
 }
 
@@ -5364,21 +5364,21 @@ select:focus-visible {
 
 .project-files p {
 
-  margin:
+  margin:
 
-    0
+    0
 
-    0
+    0
 
-    12px;
-
-
-
-  color: var(--muted);
+    12px;
 
 
 
-  font-size: 13px;
+  color: var(--muted);
+
+
+
+  font-size: 13px;
 
 }
 
@@ -5386,35 +5386,35 @@ select:focus-visible {
 
 .file-toggle {
 
-  display: flex !important;
+  display: flex !important;
 
 
 
-  flex-direction: row !important;
+  flex-direction: row !important;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  gap: 9px !important;
+  gap: 9px !important;
 
 
 
-  padding: 9px;
+  padding: 9px;
 
 
 
-  border-radius: 8px;
+  border-radius: 8px;
 
 
 
-  background: var(--surface-2);
+  background: var(--surface-2);
 
 
 
-  margin-bottom: 6px;
+  margin-bottom: 6px;
 
 }
 
@@ -5422,11 +5422,11 @@ select:focus-visible {
 
 .file-toggle small {
 
-  margin-left: auto;
+  margin-left: auto;
 
 
 
-  color: var(--muted);
+  color: var(--muted);
 
 }
 
@@ -5434,73 +5434,73 @@ select:focus-visible {
 
 .empty-panel {
 
-  min-height: 220px;
+  min-height: 220px;
 
 
 
-  border:
+  border:
 
-    1px
+    1px
 
-    dashed
+    dashed
 
-    var(--border);
-
-
-
-  border-radius: 14px;
+    var(--border);
 
 
 
-  display: flex;
+  border-radius: 14px;
 
 
 
-  flex-direction: column;
+  display: flex;
 
 
 
-  align-items: center;
+  flex-direction: column;
 
 
 
-  justify-content: center;
+  align-items: center;
 
 
 
-  color: var(--muted);
+  justify-content: center;
 
 
 
-  text-align: center;
+  color: var(--muted);
+
+
+
+  text-align: center;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   SETTINGS
+   SETTINGS
 
-\========================================================= \*/
+========================================================= */
 
 
 
 .settings-grid {
 
-  display: grid;
+  display: grid;
 
 
 
-  grid-template-columns:
+  grid-template-columns:
 
-    1fr
+    1fr
 
-    1fr;
+    1fr;
 
 
 
-  gap: 16px;
+  gap: 16px;
 
 }
 
@@ -5508,25 +5508,25 @@ select:focus-visible {
 
 .settings-card {
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
-
-
-
-  border-radius: 16px;
+    var(--border);
 
 
 
-  padding: 20px;
+  border-radius: 16px;
 
 
 
-  background: var(--surface);
+  padding: 20px;
+
+
+
+  background: var(--surface);
 
 }
 
@@ -5534,13 +5534,13 @@ select:focus-visible {
 
 .settings-card h3 {
 
-  margin:
+  margin:
 
-    0
+    0
 
-    0
+    0
 
-    5px;
+    5px;
 
 }
 
@@ -5548,21 +5548,21 @@ select:focus-visible {
 
 .settings-card > p {
 
-  color: var(--muted);
+  color: var(--muted);
 
 
 
-  font-size: 13px;
+  font-size: 13px;
 
 
 
-  margin:
+  margin:
 
-    0
+    0
 
-    0
+    0
 
-    16px;
+    16px;
 
 }
 
@@ -5570,17 +5570,17 @@ select:focus-visible {
 
 .theme-options {
 
-  display: grid;
+  display: grid;
 
 
 
-  grid-template-columns:
+  grid-template-columns:
 
-    repeat(3, 1fr);
+    repeat(3, 1fr);
 
 
 
-  gap: 8px;
+  gap: 8px;
 
 }
 
@@ -5588,53 +5588,53 @@ select:focus-visible {
 
 .theme-choice {
 
-  border:
+  border:
 
-    1px
+    1px
 
-    solid
+    solid
 
-    var(--border);
-
-
-
-  background: transparent;
+    var(--border);
 
 
 
-  color: inherit;
+  background: transparent;
 
 
 
-  padding:
-
-    12px
-
-    8px;
+  color: inherit;
 
 
 
-  border-radius: 10px;
+  padding:
+
+    12px
+
+    8px;
 
 
 
-  cursor: pointer;
+  border-radius: 10px;
 
 
 
-  display: flex;
+  cursor: pointer;
 
 
 
-  flex-direction: column;
+  display: flex;
 
 
 
-  align-items: center;
+  flex-direction: column;
 
 
 
-  gap: 7px;
+  align-items: center;
+
+
+
+  gap: 7px;
 
 }
 
@@ -5642,7 +5642,7 @@ select:focus-visible {
 
 .theme-choice:hover {
 
-  background: var(--surface-2);
+  background: var(--surface-2);
 
 }
 
@@ -5650,11 +5650,11 @@ select:focus-visible {
 
 .theme-choice.active {
 
-  border-color: var(--red);
+  border-color: var(--red);
 
 
 
-  color: var(--red);
+  color: var(--red);
 
 }
 
@@ -5662,47 +5662,47 @@ select:focus-visible {
 
 .setting-toggle {
 
-  width: 100%;
+  width: 100%;
 
 
 
-  display: flex;
+  display: flex;
 
 
 
-  justify-content: space-between;
+  justify-content: space-between;
 
 
 
-  align-items: center;
+  align-items: center;
 
 
 
-  border: 0;
+  border: 0;
 
 
 
-  background: transparent;
+  background: transparent;
 
 
 
-  color: inherit;
+  color: inherit;
 
 
 
-  padding:
+  padding:
 
-    11px
+    11px
 
-    0;
-
-
-
-  cursor: pointer;
+    0;
 
 
 
-  font-size: 14px;
+  cursor: pointer;
+
+
+
+  font-size: 14px;
 
 }
 
@@ -5710,29 +5710,29 @@ select:focus-visible {
 
 .toggle {
 
-  width: 38px;
+  width: 38px;
 
-  height: 21px;
-
-
-
-  border-radius: 20px;
+  height: 21px;
 
 
 
-  background: #c7c7c7;
+  border-radius: 20px;
 
 
 
-  padding: 2px;
+  background: #c7c7c7;
 
 
 
-  box-sizing: border-box;
+  padding: 2px;
 
 
 
-  transition: 0.2s;
+  box-sizing: border-box;
+
+
+
+  transition: 0.2s;
 
 }
 
@@ -5740,25 +5740,25 @@ select:focus-visible {
 
 .toggle span {
 
-  display: block;
+  display: block;
 
 
 
-  width: 17px;
+  width: 17px;
 
-  height: 17px;
-
-
-
-  border-radius: 50%;
+  height: 17px;
 
 
 
-  background: white;
+  border-radius: 50%;
 
 
 
-  transition: 0.2s;
+  background: white;
+
+
+
+  transition: 0.2s;
 
 }
 
@@ -5766,7 +5766,7 @@ select:focus-visible {
 
 .toggle.on {
 
-  background: var(--red);
+  background: var(--red);
 
 }
 
@@ -5774,7 +5774,7 @@ select:focus-visible {
 
 .toggle.on span {
 
-  transform: translateX(17px);
+  transform: translateX(17px);
 
 }
 
@@ -5782,7 +5782,7 @@ select:focus-visible {
 
 .danger-card {
 
-  border-color: #efc9c9;
+  border-color: #efc9c9;
 
 }
 
@@ -5790,53 +5790,53 @@ select:focus-visible {
 
 .danger-button {
 
-  display: block;
+  display: block;
 
 
 
-  width: 100%;
+  width: 100%;
 
 
 
-  text-align: left;
+  text-align: left;
 
 
 
-  padding:
+  padding:
 
-    11px
+    11px
 
-    12px;
-
-
-
-  margin-top: 8px;
+    12px;
 
 
 
-  border:
-
-    1px
-
-    solid
-
-    #efc9c9;
+  margin-top: 8px;
 
 
 
-  border-radius: 9px;
+  border:
+
+    1px
+
+    solid
+
+    #efc9c9;
 
 
 
-  background: transparent;
+  border-radius: 9px;
 
 
 
-  color: var(--danger);
+  background: transparent;
 
 
 
-  cursor: pointer;
+  color: var(--danger);
+
+
+
+  cursor: pointer;
 
 }
 
@@ -5844,25 +5844,25 @@ select:focus-visible {
 
 .danger-button:hover {
 
-  background: #fff3f3;
+  background: #fff3f3;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   SCROLLBARS
+   SCROLLBARS
 
-\========================================================= \*/
+========================================================= */
 
 
 
-\* {
+* {
 
-  scrollbar-width: thin;
+  scrollbar-width: thin;
 
-  scrollbar-color: #cfcfcf transparent;
+  scrollbar-color: #cfcfcf transparent;
 
 }
 
@@ -5870,9 +5870,9 @@ select:focus-visible {
 
 ::-webkit-scrollbar {
 
-  width: 6px;
+  width: 6px;
 
-  height: 6px;
+  height: 6px;
 
 }
 
@@ -5880,7 +5880,7 @@ select:focus-visible {
 
 ::-webkit-scrollbar-track {
 
-  background: transparent;
+  background: transparent;
 
 }
 
@@ -5888,11 +5888,11 @@ select:focus-visible {
 
 ::-webkit-scrollbar-thumb {
 
-  background: #cccccc;
+  background: #cccccc;
 
 
 
-  border-radius: 10px;
+  border-radius: 10px;
 
 }
 
@@ -5900,983 +5900,983 @@ select:focus-visible {
 
 ::-webkit-scrollbar-thumb:hover {
 
-  background: #aaaaaa;
+  background: #aaaaaa;
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   TABLET
+   TABLET
 
-\========================================================= \*/
+========================================================= */
 
 
 
 @media (max-width: 900px) {
 
-  .sidebar {
+  .sidebar {
 
-    width: 235px;
+    width: 235px;
 
-    min-width: 235px;
+    min-width: 235px;
 
-  }
-
-
-
-  .messages-container {
-
-    padding-left: 18px;
-
-    padding-right: 18px;
-
-  }
+  }
 
 
 
-  .message-content-wrapper {
+  .messages-container {
 
-    max-width: 84%;
+    padding-left: 18px;
 
-  }
+    padding-right: 18px;
 
-
-
-  .quick-actions {
-
-    width: min(680px, 100%);
-
-  }
+  }
 
 
 
-  .aurex-panel-page {
+  .message-content-wrapper {
 
-    padding:
+    max-width: 84%;
 
-      30px
-
-      25px
-
-      70px;
-
-  }
+  }
 
 
 
-  .project-layout,
+  .quick-actions {
 
-  .settings-grid {
+    width: min(680px, 100%);
 
-    grid-template-columns: 1fr;
+  }
 
-  }
+
+
+  .aurex-panel-page {
+
+    padding:
+
+      30px
+
+      25px
+
+      70px;
+
+  }
+
+
+
+  .project-layout,
+
+  .settings-grid {
+
+    grid-template-columns: 1fr;
+
+  }
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   MOBILE
+   MOBILE
 
-\========================================================= \*/
+========================================================= */
 
 
 
 @media (max-width: 760px) {
 
-  .sidebar {
+  .sidebar {
 
-    position: fixed;
+    position: fixed;
 
 
 
-    z-index: 20;
+    z-index: 20;
 
 
 
-    left: 0;
+    left: 0;
 
-    top: 0;
+    top: 0;
 
-    bottom: 0;
+    bottom: 0;
 
 
 
-    width: 270px;
+    width: 270px;
 
-    min-width: 270px;
+    min-width: 270px;
 
 
 
-    transform: translateX(-105%);
+    transform: translateX(-105%);
 
 
 
-    box-shadow:
+    box-shadow:
 
-      12px
+      12px
 
-      0
+      0
 
-      35px
+      35px
 
-      rgba(0, 0, 0, 0.14);
+      rgba(0, 0, 0, 0.14);
 
-  }
+  }
 
 
 
-  .sidebar.sidebar-open {
+  .sidebar.sidebar-open {
 
-    transform: translateX(0);
+    transform: translateX(0);
 
-  }
+  }
 
 
 
-  .sidebar-overlay {
+  .sidebar-overlay {
 
-    display: block;
+    display: block;
 
-  }
+  }
 
 
 
-  .mobile-close {
+  .mobile-close {
 
-    display: block;
+    display: block;
 
-  }
+  }
 
 
 
-  .mobile-menu-button {
+  .mobile-menu-button {
 
-    display: flex;
+    display: flex;
 
 
 
-    align-items: center;
+    align-items: center;
 
 
 
-    justify-content: center;
+    justify-content: center;
 
-  }
+  }
 
 
 
-  .chat-header {
+  .chat-header {
 
-    height: 58px;
+    height: 58px;
 
 
 
-    padding:
+    padding:
 
-      0
+      0
 
-      12px;
+      12px;
 
-  }
+  }
 
 
 
-  .header-title {
+  .header-title {
 
-    font-size: 15px;
+    font-size: 15px;
 
-  }
+  }
 
 
 
-  .header-title img {
+  .header-title img {
 
-    width: 25px !important;
+    width: 25px !important;
 
-    height: 25px !important;
+    height: 25px !important;
 
 
 
-    min-width: 25px !important;
+    min-width: 25px !important;
 
-    min-height: 25px !important;
+    min-height: 25px !important;
 
 
 
-    max-width: 25px !important;
+    max-width: 25px !important;
 
-    max-height: 25px !important;
+    max-height: 25px !important;
 
-  }
+  }
 
 
 
-  .model-selector {
+  .model-selector {
 
-    min-width: 120px;
+    min-width: 120px;
 
 
 
-    max-width: 145px;
+    max-width: 145px;
 
 
 
-    height: 35px;
+    height: 35px;
 
 
 
-    font-size: 11px;
+    font-size: 11px;
 
-  }
+  }
 
 
 
-  .empty-chat {
+  .empty-chat {
 
-    padding:
+    padding:
 
-      25px
+      25px
 
-      16px
+      16px
 
-      150px;
+      150px;
 
-  }
+  }
 
 
 
-  .welcome-logo {
+  .welcome-logo {
 
-    width: 68px !important;
+    width: 68px !important;
 
-    height: 68px !important;
+    height: 68px !important;
 
 
 
-    min-width: 68px !important;
+    min-width: 68px !important;
 
-    min-height: 68px !important;
+    min-height: 68px !important;
 
 
 
-    max-width: 68px !important;
+    max-width: 68px !important;
 
-    max-height: 68px !important;
+    max-height: 68px !important;
 
 
 
-    margin-bottom: 17px;
+    margin-bottom: 17px;
 
-  }
+  }
 
 
 
-  .empty-chat h1 {
+  .empty-chat h1 {
 
-    font-size: 26px;
+    font-size: 26px;
 
-  }
+  }
 
 
 
-  .empty-chat p {
+  .empty-chat p {
 
-    max-width: 340px;
+    max-width: 340px;
 
 
 
-    font-size: 13px;
+    font-size: 13px;
 
 
 
-    margin-bottom: 22px;
+    margin-bottom: 22px;
 
-  }
+  }
 
 
 
-  .quick-actions {
+  .quick-actions {
 
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
 
 
 
-    width: min(350px, 100%);
+    width: min(350px, 100%);
 
-  }
+  }
 
 
 
-  .quick-actions button {
+  .quick-actions button {
 
-    min-height: 55px;
+    min-height: 55px;
 
 
 
-    padding:
+    padding:
 
-      11px
+      11px
 
-      13px;
+      13px;
 
-  }
+  }
 
 
 
-  .messages-container {
+  .messages-container {
 
-    padding:
+    padding:
 
-      22px
+      22px
 
-      13px
+      13px
 
-      165px;
+      165px;
 
-  }
+  }
 
 
 
-  .messages-inner {
+  .messages-inner {
 
-    gap: 20px;
+    gap: 20px;
 
-  }
+  }
 
 
 
-  .message-content-wrapper {
+  .message-content-wrapper {
 
-    max-width: 86%;
+    max-width: 86%;
 
-  }
+  }
 
 
 
-  .message-row\.user .message-content-wrapper {
+  .message-row.user .message-content-wrapper {
 
-    max-width: 86%;
+    max-width: 86%;
 
-  }
+  }
 
 
 
-  .message-bubble {
+  .message-bubble {
 
-    padding:
+    padding:
 
-      11px
+      11px
 
-      12px;
+      12px;
 
 
 
-    font-size: 13px;
+    font-size: 13px;
 
 
 
-    border-radius: 13px;
+    border-radius: 13px;
 
-  }
+  }
 
 
 
-  .message-avatar {
+  .message-avatar {
 
-    width: 29px;
+    width: 29px;
 
-    height: 29px;
+    height: 29px;
 
 
 
-    border-radius: 8px;
+    border-radius: 8px;
 
-  }
+  }
 
 
 
-  .message-avatar img {
+  .message-avatar img {
 
-    width: 21px !important;
+    width: 21px !important;
 
-    height: 21px !important;
+    height: 21px !important;
 
 
 
-    max-width: 21px !important;
+    max-width: 21px !important;
 
-    max-height: 21px !important;
+    max-height: 21px !important;
 
-  }
+  }
 
 
 
-  .message-name {
+  .message-name {
 
-    font-size: 10px;
+    font-size: 10px;
 
-  }
+  }
 
 
 
-  .action-label {
+  .action-label {
 
-    display: none;
+    display: none;
 
-  }
+  }
 
 
 
-  .message-actions button {
+  .message-actions button {
 
-    padding:
+    padding:
 
-      6px
+      6px
 
-      8px;
+      8px;
 
-  }
+  }
 
 
 
-  .composer-area {
+  .composer-area {
 
-    padding:
+    padding:
 
-      15px
+      15px
 
-      10px
+      10px
 
-      9px;
+      9px;
 
-  }
+  }
 
 
 
-  .composer {
+  .composer {
 
-    border-radius: 16px;
+    border-radius: 16px;
 
 
 
-    padding: 7px;
+    padding: 7px;
 
-  }
+  }
 
 
 
-  .composer textarea {
+  .composer textarea {
 
-    min-height: 40px;
+    min-height: 40px;
 
 
 
-    font-size: 13px;
+    font-size: 13px;
 
-  }
+  }
 
 
 
-  .composer-bottom {
+  .composer-bottom {
 
-    align-items: center;
+    align-items: center;
 
-  }
+  }
 
 
 
-  .attached-document-name {
+  .attached-document-name {
 
-    max-width: 90px;
+    max-width: 90px;
 
-  }
+  }
 
 
 
-  .source-file strong {
+  .source-file strong {
 
-    max-width: 180px;
+    max-width: 180px;
 
-  }
+  }
 
 
 
-  .view-excerpt-button {
+  .view-excerpt-button {
 
-    font-size: 8px;
+    font-size: 8px;
 
 
 
-    padding:
+    padding:
 
-      5px
+      5px
 
-      6px;
+      6px;
 
-  }
+  }
 
 
 
-  .aurex-panel-page {
+  .aurex-panel-page {
 
-    padding:
+    padding:
 
-      24px
+      24px
 
-      16px
+      16px
 
-      60px;
+      60px;
 
-  }
+  }
 
 
 
-  .panel-heading {
+  .panel-heading {
 
-    flex-direction: column;
+    flex-direction: column;
 
 
 
-    gap: 15px;
+    gap: 15px;
 
-  }
+  }
 
 
 
-  .panel-heading h2 {
+  .panel-heading h2 {
 
-    font-size: 25px;
+    font-size: 25px;
 
-  }
+  }
 
 
 
-  .primary-button.small {
+  .primary-button.small {
 
-    width: 100%;
+    width: 100%;
 
-  }
+  }
 
 
 
-  .project-layout,
+  .project-layout,
 
-  .settings-grid {
+  .settings-grid {
 
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
 
-  }
+  }
 
 
 
-  .theme-options {
+  .theme-options {
 
-    grid-template-columns:
+    grid-template-columns:
 
-      repeat(3, 1fr);
+      repeat(3, 1fr);
 
-  }
+  }
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   SMALL MOBILE
+   SMALL MOBILE
 
-\========================================================= \*/
+========================================================= */
 
 
 
 @media (max-width: 520px) {
 
-  .auth-page {
+  .auth-page {
 
-    padding:
+    padding:
 
-      70px
+      70px
 
-      18px
+      18px
 
-      50px;
+      50px;
 
-  }
+  }
 
 
 
-  .auth-brand {
+  .auth-brand {
 
-    top: 20px;
+    top: 20px;
 
-    left: 20px;
+    left: 20px;
 
 
 
-    font-size: 17px;
+    font-size: 17px;
 
-  }
+  }
 
 
 
-  .auth-brand img {
+  .auth-brand img {
 
-    width: 32px !important;
+    width: 32px !important;
 
-    height: 32px !important;
+    height: 32px !important;
 
 
 
-    max-width: 32px !important;
+    max-width: 32px !important;
 
-    max-height: 32px !important;
+    max-height: 32px !important;
 
-  }
+  }
 
 
 
-  .auth-card {
+  .auth-card {
 
-    border: 0;
+    border: 0;
 
 
 
-    box-shadow: none;
+    box-shadow: none;
 
 
 
-    padding:
+    padding:
 
-      25px
+      25px
 
-      8px;
+      8px;
 
 
 
-    background: transparent;
+    background: transparent;
 
-  }
+  }
 
 
 
-  .mobile-logo {
+  .mobile-logo {
 
-    display: flex;
+    display: flex;
 
 
 
-    justify-content: center;
+    justify-content: center;
 
 
 
-    margin-bottom: 12px;
+    margin-bottom: 12px;
 
-  }
+  }
 
 
 
-  .auth-heading h1 {
+  .auth-heading h1 {
 
-    font-size: 25px;
+    font-size: 25px;
 
-  }
+  }
 
 
 
-  .empty-chat {
+  .empty-chat {
 
-    padding:
+    padding:
 
-      20px
+      20px
 
-      14px
+      14px
 
-      145px;
+      145px;
 
-  }
+  }
 
 
 
-  .welcome-logo {
+  .welcome-logo {
 
-    width: 62px !important;
+    width: 62px !important;
 
-    height: 62px !important;
+    height: 62px !important;
 
 
 
-    min-width: 62px !important;
+    min-width: 62px !important;
 
-    min-height: 62px !important;
+    min-height: 62px !important;
 
 
 
-    max-width: 62px !important;
+    max-width: 62px !important;
 
-    max-height: 62px !important;
+    max-height: 62px !important;
 
-  }
+  }
 
 
 
-  .empty-chat h1 {
+  .empty-chat h1 {
 
-    font-size: 24px;
+    font-size: 24px;
 
-  }
+  }
 
 
 
-  .empty-chat p {
+  .empty-chat p {
 
-    font-size: 12px;
+    font-size: 12px;
 
-  }
+  }
 
 
 
-  .model-selector {
+  .model-selector {
 
-    min-width: 105px;
+    min-width: 105px;
 
 
 
-    max-width: 120px;
+    max-width: 120px;
 
-  }
+  }
 
 
 
-  .message-content-wrapper {
+  .message-content-wrapper {
 
-    max-width: calc(100% - 39px);
+    max-width: calc(100% - 39px);
 
-  }
+  }
 
 
 
-  .message-row\.user .message-content-wrapper {
+  .message-row.user .message-content-wrapper {
 
-    max-width: 90%;
+    max-width: 90%;
 
-  }
+  }
 
 
 
-  .message-bubble {
+  .message-bubble {
 
-    font-size: 12.5px;
+    font-size: 12.5px;
 
-  }
+  }
 
 
 
-  .message-actions {
+  .message-actions {
 
-    gap: 0;
+    gap: 0;
 
-  }
+  }
 
 
 
-  .source-card-top {
+  .source-card-top {
 
-    align-items: flex-start;
+    align-items: flex-start;
 
-  }
+  }
 
 
 
-  .source-file {
+  .source-file {
 
-    min-width: 0;
+    min-width: 0;
 
-  }
+  }
 
 
 
-  .source-file strong {
+  .source-file strong {
 
-    max-width: 140px;
+    max-width: 140px;
 
-  }
+  }
 
 
 
-  .composer-documents {
+  .composer-documents {
 
-    max-width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
 
-  }
+  }
 
 
 
-  .attached-document {
+  .attached-document {
 
-    max-width: 190px;
+    max-width: 190px;
 
-  }
+  }
 
 
 
-  .attached-document-name {
+  .attached-document-name {
 
-    max-width: 75px;
+    max-width: 75px;
 
-  }
+  }
 
 
 
-  .panel-heading h2 {
+  .panel-heading h2 {
 
-    font-size: 23px;
+    font-size: 23px;
 
-  }
+  }
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   VERY SMALL DEVICES
+   VERY SMALL DEVICES
 
-\========================================================= \*/
+========================================================= */
 
 
 
 @media (max-width: 380px) {
 
-  .chat-header {
+  .chat-header {
 
-    padding:
+    padding:
 
-      0
+      0
 
-      8px;
+      8px;
 
-  }
-
-
-
-  .header-title span {
-
-    display: none;
-
-  }
+  }
 
 
 
-  .model-selector {
+  .header-title span {
 
-    min-width: 100px;
+    display: none;
 
-  }
-
-
-
-  .empty-chat h1 {
-
-    font-size: 22px;
-
-  }
+  }
 
 
 
-  .welcome-logo {
+  .model-selector {
 
-    width: 58px !important;
+    min-width: 100px;
 
-    height: 58px !important;
-
-
-
-    min-width: 58px !important;
-
-    min-height: 58px !important;
+  }
 
 
 
-    max-width: 58px !important;
+  .empty-chat h1 {
 
-    max-height: 58px !important;
+    font-size: 22px;
 
-  }
-
-
-
-  .messages-container {
-
-    padding-left: 9px;
-
-    padding-right: 9px;
-
-  }
+  }
 
 
 
-  .message-content-wrapper {
+  .welcome-logo {
 
-    max-width: calc(100% - 36px);
+    width: 58px !important;
 
-  }
+    height: 58px !important;
 
 
 
-  .composer-area {
+    min-width: 58px !important;
 
-    padding-left: 7px;
+    min-height: 58px !important;
 
-    padding-right: 7px;
 
-  }
+
+    max-width: 58px !important;
+
+    max-height: 58px !important;
+
+  }
+
+
+
+  .messages-container {
+
+    padding-left: 9px;
+
+    padding-right: 9px;
+
+  }
+
+
+
+  .message-content-wrapper {
+
+    max-width: calc(100% - 36px);
+
+  }
+
+
+
+  .composer-area {
+
+    padding-left: 7px;
+
+    padding-right: 7px;
+
+  }
 
 }
 
 
 
-/\* =========================================================
+/* =========================================================
 
-   PRINT
+   PRINT
 
-\========================================================= \*/
+========================================================= */
 
 
 
 @media print {
 
-  .sidebar,
+  .sidebar,
 
-  .chat-header,
+  .chat-header,
 
-  .composer-area {
+  .composer-area {
 
-    display: none !important;
+    display: none !important;
 
-  }
-
-
-
-  .chat-home {
-
-    height: auto;
-
-  }
+  }
 
 
 
-  .messages-container {
+  .chat-home {
 
-    overflow: visible;
+    height: auto;
 
-    padding: 20px;
+  }
 
-  }
+
+
+  .messages-container {
+
+    overflow: visible;
+
+    padding: 20px;
+
+  }
 
 }
 
