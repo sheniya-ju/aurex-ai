@@ -2718,13 +2718,51 @@ function ChatPage({
       });
   }
 
-  async function handleCreateProject(name: string, description: string, instructions: string) {
-    const project = await createProjectApi(name, description, instructions);
-    setProjects(previous => [project, ...previous]);
+  async function handleCreateProject(
+  name: string,
+  description: string,
+  instructions: string,
+) {
+  try {
+    setError("");
+
+    const project = await createProjectApi(
+      name,
+      description,
+      instructions,
+    );
+
+    // Add the new project to the list
+    setProjects((previous) => [
+      project,
+      ...previous,
+    ]);
+
+    // Make the new project active
     setActiveProjectId(project.id);
-    setActiveView("projects");
-    await loadConversations();
+
+    // Start a completely new chat for this project
+    setActiveConversationId(null);
+    setMessages([]);
+    setInput("");
+    setSelectedDocumentIds([]);
+    setReplyingTo(null);
+
+    // Go directly to the chat screen
+    setActiveView("chat");
+
+    // Focus the composer
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
+  } catch (err) {
+    setError(
+      err instanceof Error
+        ? err.message
+        : "Unable to create project.",
+    );
   }
+}
 
   async function handleUpdateProject(id: number, name: string, description: string, instructions: string) {
     const project = await updateProjectApi(id, name, description, instructions);
