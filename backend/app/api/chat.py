@@ -511,23 +511,17 @@ def _prepare(
 
 
 
-    sources = (
+    ssources = (
 
-        retrieve_context(
-
-            data.message,
-
-            document_ids,
-
-            top_k=8,
-
-        )
-
-        if document_ids
-
-        else []
-
+    retrieve_context(
+        data.message,
+        document_ids,
+        db,
+        top_k=8,
     )
+    if document_ids
+    else []
+)
 
 
 
@@ -546,10 +540,8 @@ def _prepare(
         sources,
 
         explicit_documents=bool(
-
-            data.document_ids
-
-        ),
+    data.document_ids or project_document_ids
+),
 
     )
 
@@ -579,7 +571,7 @@ def _prepare(
 
         # trust those selected documents.
 
-        if data.document_ids:
+        if data.document_ids or project_document_ids:
 
 
 

@@ -38,4 +38,7 @@ async def upload_document(file:UploadFile=File(...),user:User=Depends(get_curren
 def delete_document(document_id:int,user:User=Depends(get_current_user),db:Session=Depends(get_db)):
     d=db.query(Document).filter(Document.id==document_id,Document.user_id==user.id).first()
     if not d: raise HTTPException(status_code=404,detail="Document not found.")
-    delete_document_vectors(d.id); db.delete(d); db.commit(); return {"message":"Document deleted successfully."}
+    delete_document_vectors(
+    d.id,
+    db,
+); db.delete(d); db.commit(); return {"message":"Document deleted successfully."}

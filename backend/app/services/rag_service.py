@@ -1,34 +1,10 @@
 import os
-import uuid
+import re
 
-import chromadb
 import pymupdf
-from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
+from sqlalchemy.orm import Session
 
-from app.database.models import Document
-
-
-# ============================================================
-# CHROMA CONFIGURATION
-# ============================================================
-
-CHROMA_PATH = os.path.join(
-    os.path.dirname(
-        os.path.dirname(
-            os.path.dirname(__file__)
-        )
-    ),
-    "chroma_data",
-)
-
-chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
-
-embedding_function = DefaultEmbeddingFunction()
-
-collection = chroma_client.get_or_create_collection(
-    name="aurex_documents",
-    embedding_function=embedding_function,
-)
+from app.database.models import Document, DocumentChunk
 
 
 # ============================================================
@@ -67,47 +43,99 @@ def split_text(
 
 
 # ============================================================
+# KEYWORD HELPERS
+# ============================================================
+
+def _tokenize(text: str) -> list[str]:
+    """
+    Convert text into simple lowercase keywords.
+    """
+
+    return re.findall(
+        r"\b[a-zA-Z0-9]{2,}\b",
+        text.lower(),
+    )
+
+
+def _score_chunk(
+    query: str,
+    content: str,
+) -> float:
+
+    query_words = set(_tokenize(query))
+    content_words = _tokenize(content)
+
+    if not query_words or not content_words:
+        return 0.0
+
+    content_set = set(content_words)
+
+    matched = query_words.intersection(content_set)
+
+    if not matched:
+        return 0.0
+
+    # Basic keyword relevance score.
+    #
+    # More matching query words = higher score.
+    #
+    # Small bonus when the exact query appears.
+    score = len(matched) / len(query_words)
+
+    if query.lower().strip() in content.lower():
+        score += 0.5
+
+    return score
+
+
+# ============================================================
 # PROCESS PDF
 # ============================================================
 
-def process_pdf(file_path: str, document: Document, db):
+def process_pdf(
+    file_path: str,
+    document: Document,
+    db: Session,
+):
 
     pdf = pymupdf.open(file_path)
 
-    document.total_pages = len(pdf)
+    try:
 
-    all_chunks = []
+        document.total_pages = len(pdf)
 
-    chunk_index = 0
+        all_chunks = []
 
-    for page_number in range(len(pdf)):
+        chunk_index = 0
 
-        text = pdf[page_number].get_text("text")
+        for page_number in range(len(pdf)):
 
-        if not text.strip():
-            continue
+            text = pdf[page_number].get_text("text")
 
-        chunks = split_text(text)
+            if not text.strip():
+                continue
 
-        for chunk in chunks:
+            chunks = split_text(text)
 
-            all_chunks.append(
-                {
-                    "content": chunk,
-                    "page_number": page_number + 1,
-                    "chunk_index": chunk_index,
-                }
-            )
+            for chunk in chunks:
 
-            chunk_index += 1
+                all_chunks.append(
+                    {
+                        "content": chunk,
+                        "page_number": page_number + 1,
+                        "chunk_index": chunk_index,
+                    }
+                )
 
-    pdf.close()
+                chunk_index += 1
+
+    finally:
+
+        pdf.close()
 
     # --------------------------------------------------------
-    # SAVE CHUNKS TO DATABASE
+    # SAVE CHUNKS TO POSTGRESQL
     # --------------------------------------------------------
-
-    from app.database.models import DocumentChunk
 
     for item in all_chunks:
 
@@ -122,42 +150,6 @@ def process_pdf(file_path: str, document: Document, db):
 
     db.commit()
 
-    texts = [
-        item["content"]
-        for item in all_chunks
-    ]
-
-    if not texts:
-        return 0
-
-    # --------------------------------------------------------
-    # STORE DOCUMENTS IN CHROMA
-    #
-    # Chroma automatically creates embeddings using
-    # DefaultEmbeddingFunction.
-    # --------------------------------------------------------
-
-    ids = [
-        f"doc_{document.id}_{uuid.uuid4().hex}"
-        for _ in texts
-    ]
-
-    metadatas = [
-        {
-            "document_id": document.id,
-            "filename": document.filename,
-            "page_number": item["page_number"],
-            "chunk_index": item["chunk_index"],
-        }
-        for item in all_chunks
-    ]
-
-    collection.add(
-        ids=ids,
-        documents=texts,
-        metadatas=metadatas,
-    )
-
     return len(all_chunks)
 
 
@@ -168,75 +160,120 @@ def process_pdf(file_path: str, document: Document, db):
 def search_documents(
     query: str,
     user_document_ids: list[int],
+    db: Session,
     top_k: int = 8,
 ):
 
     if not user_document_ids:
         return []
 
-    results = collection.query(
-        query_texts=[query],
-        n_results=top_k,
-        where={
-            "document_id": {
-                "$in": user_document_ids
-            }
-        },
+    # --------------------------------------------------------
+    # Get chunks belonging only to the user's documents.
+    # --------------------------------------------------------
+
+    chunks = (
+        db.query(
+            DocumentChunk,
+            Document,
+        )
+        .join(
+            Document,
+            Document.id == DocumentChunk.document_id,
+        )
+        .filter(
+            Document.id.in_(user_document_ids),
+        )
+        .all()
     )
 
-    documents = results.get(
-        "documents",
-        [[]],
-    )[0]
+    if not chunks:
+        return []
 
-    metadatas = results.get(
-        "metadatas",
-        [[]],
-    )[0]
+    # --------------------------------------------------------
+    # Score chunks using lightweight keyword matching.
+    # --------------------------------------------------------
 
-    distances = results.get(
-        "distances",
-        [[]],
-    )[0]
+    scored = []
 
-    return [
-        {
-            "content": text,
-            "document_id": int(meta["document_id"]),
-            "filename": meta["filename"],
-            "page_number": int(meta["page_number"]),
-            "distance": float(distance),
-        }
-        for text, meta, distance
-        in zip(
-            documents,
-            metadatas,
-            distances,
+    for chunk, document in chunks:
+
+        score = _score_chunk(
+            query,
+            chunk.content,
         )
-    ]
+
+        if score <= 0:
+            continue
+
+        scored.append(
+            {
+                "content": chunk.content,
+                "document_id": int(chunk.document_id),
+                "filename": document.filename,
+                "page_number": int(chunk.page_number),
+                "chunk_index": int(chunk.chunk_index),
+                "score": score,
+            }
+        )
+
+    # --------------------------------------------------------
+    # Highest relevance first.
+    # --------------------------------------------------------
+
+    scored.sort(
+        key=lambda item: item["score"],
+        reverse=True,
+    )
+
+    # --------------------------------------------------------
+    # Convert score to a distance-like value.
+    #
+    # Existing AUREX routing expects "distance".
+    #
+    # 0.0 = highly relevant
+    # 1.0 = not relevant
+    # --------------------------------------------------------
+
+    results = []
+
+    for item in scored[:top_k]:
+
+        score = item["score"]
+
+        distance = max(
+            0.0,
+            min(
+                1.0,
+                1.0 - min(score, 1.0),
+            ),
+        )
+
+        results.append(
+            {
+                "content": item["content"],
+                "document_id": item["document_id"],
+                "filename": item["filename"],
+                "page_number": item["page_number"],
+                "distance": distance,
+            }
+        )
+
+    return results
 
 
 # ============================================================
-# DELETE DOCUMENT VECTORS
+# DELETE DOCUMENT CHUNKS
 # ============================================================
 
 def delete_document_vectors(
     document_id: int,
+    db: Session,
 ):
 
-    results = collection.get(
-        where={
-            "document_id": document_id
-        }
+    db.query(DocumentChunk).filter(
+        DocumentChunk.document_id == document_id
+    ).delete(
+        synchronize_session=False
     )
 
-    ids = results.get(
-        "ids",
-        [],
-    )
-
-    if ids:
-
-        collection.delete(
-            ids=ids
-        )
+    db.commit()
