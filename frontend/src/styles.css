@@ -7758,3 +7758,42 @@ body,
     width: 100%;
   }
 }
+/* =========================================================
+   PIN BUTTON
+========================================================= */
+
+.recent-chat-pin {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.65;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    opacity 0.15s;
+}
+
+.recent-chat-pin:hover,
+.recent-chat-pin.pinned {
+  background: var(--red-soft);
+  color: var(--red);
+  opacity: 1;
+}
+
+.project-chat-pin.pinned {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+:root[data-theme="dark"] .recent-chat-pin:hover,
+:root[data-theme="dark"] .recent-chat-pin.pinned,
+:root[data-theme="dark"] .project-chat-pin.pinned {
+  background: var(--red-soft);
+}
