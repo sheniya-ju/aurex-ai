@@ -87,59 +87,16 @@ function getAccessToken(): string | null {
   return localStorage.getItem("aurex_token");
 }
 
-function getRefreshToken(): string | null {
-  return localStorage.getItem("aurex_refresh_token");
-}
-
 function clearAuthStorage() {
   localStorage.removeItem("aurex_token");
-  localStorage.removeItem("aurex_refresh_token");
   localStorage.removeItem("aurex_user");
-}
-
-async function refreshAccessToken(): Promise<string | null> {
-  const refreshToken = getRefreshToken();
-
-  if (!refreshToken) {
-    return null;
-  }
-
-  try {
-    const response = await fetch(`${API_URL}/api/auth/refresh`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        refresh_token: refreshToken,
-      }),
-    });
-
-    if (!response.ok) {
-      clearAuthStorage();
-      return null;
-    }
-
-    const data = await response.json();
-
-    if (!data.access_token) {
-      clearAuthStorage();
-      return null;
-    }
-
-    localStorage.setItem("aurex_token", data.access_token);
-    return data.access_token;
-  } catch {
-    clearAuthStorage();
-    return null;
-  }
 }
 
 async function apiFetch(
   url: string,
   options: RequestInit = {},
 ): Promise<Response> {
-  let token = getAccessToken();
+  const token = getAccessToken();
 
   if (!token) {
     throw new Error("Your session has expired. Please sign in again.");
@@ -148,28 +105,10 @@ async function apiFetch(
   const headers = new Headers(options.headers || {});
   headers.set("Authorization", `Bearer ${token}`);
 
-  let response = await fetch(url, {
+  return fetch(url, {
     ...options,
     headers,
   });
-
-  if (response.status === 401) {
-    token = await refreshAccessToken();
-
-    if (!token) {
-      throw new Error("Your session has expired. Please sign in again.");
-    }
-
-    const retryHeaders = new Headers(options.headers || {});
-    retryHeaders.set("Authorization", `Bearer ${token}`);
-
-    response = await fetch(url, {
-      ...options,
-      headers: retryHeaders,
-    });
-  }
-
-  return response;
 }
 
 /* =========================================================
@@ -1909,13 +1848,14 @@ function Sidebar({
           <button
             className="mobile-close"
             type="button"
+            aria-label="Close menu"
             onClick={() =>
               setMobileOpen(
                 false,
               )
             }
           >
-            ×
+            ←
           </button>
         </div>
 
@@ -2794,11 +2734,75 @@ function ChatPage({
         onViewChange={(view) => { setActiveView(view); setMobileOpen(false); }}
       />
 
-      <main className="chat-home">
+      <main className={`chat-home ${activeView !== "chat" ? "secondary-view-active" : ""}`}>
         {activeView === "projects" ? (
-          <ProjectPanel projects={projects} documents={documents} activeProjectId={activeProjectId} onSelect={(id) => { setActiveProjectId(id); setActiveView("chat"); loadConversations(); }} onCreate={handleCreateProject} onUpdate={handleUpdateProject} onDelete={handleDeleteProject} onAttach={handleAttachProjectDocument} onDetach={handleDetachProjectDocument} />
+          <section className="secondary-view">
+            <header className="chat-header secondary-header">
+              <div className="header-left">
+                <button
+                  type="button"
+                  className="mobile-menu-button secondary-back-button"
+                  aria-label="Back to chat"
+                  onClick={() => setActiveView("chat")}
+                >
+                  ←
+                </button>
+
+                <div className="header-title">
+                  <img src={logo} alt="AUREX" />
+                  <span>Projects</span>
+                </div>
+              </div>
+            </header>
+
+            <div className="secondary-view-content">
+              <ProjectPanel
+                projects={projects}
+                documents={documents}
+                activeProjectId={activeProjectId}
+                onSelect={(id) => {
+                  setActiveProjectId(id);
+                  setActiveView("chat");
+                  loadConversations();
+                }}
+                onCreate={handleCreateProject}
+                onUpdate={handleUpdateProject}
+                onDelete={handleDeleteProject}
+                onAttach={handleAttachProjectDocument}
+                onDetach={handleDetachProjectDocument}
+              />
+            </div>
+          </section>
         ) : activeView === "settings" ? (
-          <SettingsPanel settings={settings} onChange={setSettings} onSave={handleSaveSettings} onClearChats={handleClearChats} onDeleteDocuments={handleDeleteAllDocuments} />
+          <section className="secondary-view">
+            <header className="chat-header secondary-header">
+              <div className="header-left">
+                <button
+                  type="button"
+                  className="mobile-menu-button secondary-back-button"
+                  aria-label="Back to chat"
+                  onClick={() => setActiveView("chat")}
+                >
+                  ←
+                </button>
+
+                <div className="header-title">
+                  <img src={logo} alt="AUREX" />
+                  <span>Settings</span>
+                </div>
+              </div>
+            </header>
+
+            <div className="secondary-view-content">
+              <SettingsPanel
+                settings={settings}
+                onChange={setSettings}
+                onSave={handleSaveSettings}
+                onClearChats={handleClearChats}
+                onDeleteDocuments={handleDeleteAllDocuments}
+              />
+            </div>
+          </section>
         ) : (
         <>
         {/* =================================================
@@ -2810,10 +2814,9 @@ function ChatPage({
             <button
               type="button"
               className="mobile-menu-button"
+              aria-label="Open navigation menu"
               onClick={() =>
-                setMobileOpen(
-                  true,
-                )
+                setMobileOpen(true)
               }
             >
               ☰
@@ -2833,9 +2836,7 @@ function ChatPage({
 
           <select
             className="model-selector"
-            value={
-              selectedModel
-            }
+            value={selectedModel}
             onChange={(event) => {
               setSelectedModel(event.target.value);
               setSettings(previous => ({ ...previous, model: event.target.value }));
@@ -3329,11 +3330,6 @@ export default function App() {
         "aurex_token",
       );
 
-    const savedRefreshToken =
-      localStorage.getItem(
-        "aurex_refresh_token",
-      );
-
     const savedUser =
       localStorage.getItem(
         "aurex_user",
@@ -3341,7 +3337,6 @@ export default function App() {
 
     if (
       savedToken &&
-      savedRefreshToken &&
       savedUser
     ) {
       try {
@@ -3382,13 +3377,6 @@ export default function App() {
       data.access_token,
     );
 
-    if (data.refresh_token) {
-      localStorage.setItem(
-        "aurex_refresh_token",
-        data.refresh_token,
-      );
-    }
-
     localStorage.setItem(
       "aurex_user",
       JSON.stringify(
@@ -3421,13 +3409,6 @@ export default function App() {
       "aurex_token",
       data.access_token,
     );
-
-    if (data.refresh_token) {
-      localStorage.setItem(
-        "aurex_refresh_token",
-        data.refresh_token,
-      );
-    }
 
     localStorage.setItem(
       "aurex_user",
