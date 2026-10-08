@@ -23,15 +23,28 @@ app = FastAPI(
 )
 
 
+# =========================================================
 # CORS
+# =========================================================
+
 ALLOWED_ORIGINS = [
+    # Local development
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+
+    # Production Vercel URL
     "https://aurex-ai-gray.vercel.app",
+
+    # Current Vercel deployment URL
+    "https://aurex-aub2ckv9m-shen-d3e5.vercel.app",
 ]
 
+
 # Also allow the configured frontend URL if it is different
-if settings.FRONTEND_URL and settings.FRONTEND_URL not in ALLOWED_ORIGINS:
+if (
+    settings.FRONTEND_URL
+    and settings.FRONTEND_URL not in ALLOWED_ORIGINS
+):
     ALLOWED_ORIGINS.append(settings.FRONTEND_URL)
 
 
@@ -44,13 +57,20 @@ app.add_middleware(
 )
 
 
-# API routers
+# =========================================================
+# API ROUTERS
+# =========================================================
+
 app.include_router(auth_router)
 app.include_router(chat_router)
 app.include_router(documents_router)
 app.include_router(projects_router)
 app.include_router(settings_router)
 
+
+# =========================================================
+# ROOT
+# =========================================================
 
 @app.get("/")
 def root():
@@ -59,6 +79,10 @@ def root():
         "version": "2.0.0",
     }
 
+
+# =========================================================
+# HEALTH CHECK
+# =========================================================
 
 @app.get("/health")
 def health():
