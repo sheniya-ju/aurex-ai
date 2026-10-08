@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-import { Trash2 } from "lucide-react";
+import { Pin, Trash2 } from "lucide-react";
 import ProjectPanel, { Project } from "./components/ProjectPanel";
 import SettingsPanel, { AppSettings } from "./components/SettingsPanel";
 
@@ -58,6 +58,8 @@ type Conversation = {
   title: string;
   created_at: string;
   updated_at: string;
+  project_id?: number | null;
+  is_pinned?: boolean;
 };
 
 type ChatResponse = {
@@ -87,16 +89,59 @@ function getAccessToken(): string | null {
   return localStorage.getItem("aurex_token");
 }
 
+function getRefreshToken(): string | null {
+  return localStorage.getItem("aurex_refresh_token");
+}
+
 function clearAuthStorage() {
   localStorage.removeItem("aurex_token");
+  localStorage.removeItem("aurex_refresh_token");
   localStorage.removeItem("aurex_user");
+}
+
+async function refreshAccessToken(): Promise<string | null> {
+  const refreshToken = getRefreshToken();
+
+  if (!refreshToken) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/api/auth/refresh`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        refresh_token: refreshToken,
+      }),
+    });
+
+    if (!response.ok) {
+      clearAuthStorage();
+      return null;
+    }
+
+    const data = await response.json();
+
+    if (!data.access_token) {
+      clearAuthStorage();
+      return null;
+    }
+
+    localStorage.setItem("aurex_token", data.access_token);
+    return data.access_token;
+  } catch {
+    clearAuthStorage();
+    return null;
+  }
 }
 
 async function apiFetch(
   url: string,
   options: RequestInit = {},
 ): Promise<Response> {
-  const token = getAccessToken();
+  let token = getAccessToken();
 
   if (!token) {
     throw new Error("Your session has expired. Please sign in again.");
@@ -105,10 +150,28 @@ async function apiFetch(
   const headers = new Headers(options.headers || {});
   headers.set("Authorization", `Bearer ${token}`);
 
-  return fetch(url, {
+  let response = await fetch(url, {
     ...options,
     headers,
   });
+
+  if (response.status === 401) {
+    token = await refreshAccessToken();
+
+    if (!token) {
+      throw new Error("Your session has expired. Please sign in again.");
+    }
+
+    const retryHeaders = new Headers(options.headers || {});
+    retryHeaders.set("Authorization", `Bearer ${token}`);
+
+    response = await fetch(url, {
+      ...options,
+      headers: retryHeaders,
+    });
+  }
+
+  return response;
 }
 
 /* =========================================================
@@ -320,6 +383,25 @@ async function fetchConversationMessages(
   }
 
   return data;
+}
+
+async function togglePinConversation(
+  conversationId: number,
+): Promise<boolean> {
+  const response = await apiFetch(
+    `${API_URL}/api/chat/conversations/${conversationId}/pin`,
+    { method: "PATCH" },
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data.detail || "Unable to pin chat.",
+    );
+  }
+
+  return Boolean(data.is_pinned);
 }
 
 async function deleteConversation(
@@ -1806,6 +1888,7 @@ function Sidebar({
   onDeleteConversation: (
     id: number,
   ) => void;
+  onTogglePin: (id: number) => void;
   onLogout: () => void;
   mobileOpen: boolean;
   setMobileOpen: (
@@ -1848,14 +1931,13 @@ function Sidebar({
           <button
             className="mobile-close"
             type="button"
-            aria-label="Close menu"
             onClick={() =>
               setMobileOpen(
                 false,
               )
             }
           >
-            ←
+            ×
           </button>
         </div>
 
@@ -1924,26 +2006,24 @@ function Sidebar({
         </nav>
 
         <div className="recent">
-          <p>
-            Recent chats
-          </p>
+          {(() => {
+            const pinnedConversations = conversations
+              .filter((conversation) => Boolean(conversation.is_pinned))
+              .sort(
+                (a, b) =>
+                  new Date(b.updated_at).getTime() -
+                  new Date(a.updated_at).getTime(),
+              );
 
-          {conversations.length ===
-          0 ? (
-            <div className="empty-recent">
-              No conversations
-              yet
-            </div>
-          ) : (
-            conversations
-              .slice(
-                0,
-                12,
-              )
-              .map(
-                (
-                  conversation,
-                ) => (
+            const recentConversations = conversations
+              .filter((conversation) => !conversation.is_pinned)
+              .sort(
+                (a, b) =>
+                  new Date(b.updated_at).getTime() -
+                  new Date(a.updated_at).getTime(),
+              );
+
+            const renderConversation = (conversation: Conversation) => (
                   <div
                     key={
                       conversation.id
@@ -1984,6 +2064,22 @@ function Sidebar({
 
                     <button
                       type="button"
+                      className={`recent-chat-pin ${conversation.is_pinned ? "pinned" : ""}`}
+                      title={conversation.is_pinned ? "Unpin chat" : "Pin chat"}
+                      aria-label={conversation.is_pinned ? "Unpin chat" : "Pin chat"}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        onTogglePin(conversation.id);
+                      }}
+                    >
+                      <Pin
+                        size={14}
+                        fill={conversation.is_pinned ? "currentColor" : "none"}
+                      />
+                    </button>
+
+                    <button
+                      type="button"
                       className="recent-chat-menu"
                       title="Delete chat"
                       aria-label="Delete chat"
@@ -2000,9 +2096,30 @@ function Sidebar({
                       <Trash2 size={15} />
                     </button>
                   </div>
-                ),
-              )
-          )}
+            );
+
+            return (
+              <>
+                {pinnedConversations.length > 0 && (
+                  <>
+                    <p>Pinned chats</p>
+                    {pinnedConversations.slice(0, 12).map(renderConversation)}
+                  </>
+                )}
+
+                <p>Recent chats</p>
+                {recentConversations.length === 0 ? (
+                  <div className="empty-recent">
+                    {pinnedConversations.length > 0
+                      ? "No recent conversations"
+                      : "No conversations yet"}
+                  </div>
+                ) : (
+                  recentConversations.slice(0, 12).map(renderConversation)
+                )}
+              </>
+            );
+          })()}
         </div>
 
         <div className="sidebar-bottom">
@@ -2216,7 +2333,7 @@ function ChatPage({
   useEffect(() => { applyTheme(settings.theme); }, [settings.theme]);
 
   useEffect(() => {
-    if (activeView === "chat") loadConversations();
+    loadConversations();
   }, [activeProjectId]);
 
   /* =======================================================
@@ -2302,6 +2419,26 @@ function ChatPage({
   /* =======================================================
      DELETE CONVERSATION
   ======================================================= */
+
+  async function handleTogglePin(id: number) {
+    try {
+      const isPinned = await togglePinConversation(id);
+
+      setConversations((previous) =>
+        previous.map((item) =>
+          item.id === id
+            ? { ...item, is_pinned: isPinned }
+            : item,
+        ),
+      );
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Unable to pin chat.",
+      );
+    }
+  }
 
   async function handleDeleteConversation(
     id: number,
@@ -2584,7 +2721,7 @@ function ChatPage({
     const project = await createProjectApi(name, description, instructions);
     setProjects(previous => [project, ...previous]);
     setActiveProjectId(project.id);
-    setActiveView("chat");
+    setActiveView("projects");
     await loadConversations();
   }
 
@@ -2609,6 +2746,32 @@ function ChatPage({
   async function handleDetachProjectDocument(projectId: number, documentId: number) {
     await attachProjectDocument(projectId, documentId, true);
     await loadProjects();
+  }
+
+  function handleOpenProject(projectId: number) {
+    setActiveProjectId(projectId);
+    setActiveView("projects");
+  }
+
+  function handleOpenProjectChat(conversationId: number) {
+    setActiveView("chat");
+    handleSelectConversation(conversationId);
+  }
+
+  function handleBackToNormalChats() {
+    setActiveProjectId(null);
+    setActiveConversationId(null);
+    setMessages([]);
+    setInput("");
+    setSelectedDocumentIds([]);
+    setReplyingTo(null);
+    setActiveView("chat");
+    setMobileOpen(false);
+
+    window.setTimeout(
+      () => inputRef.current?.focus(),
+      50,
+    );
   }
 
   async function handleSaveSettings() {
@@ -2721,6 +2884,9 @@ function ChatPage({
         onDeleteConversation={
           handleDeleteConversation
         }
+        onTogglePin={
+          handleTogglePin
+        }
         onLogout={
           onLogout
         }
@@ -2731,78 +2897,41 @@ function ChatPage({
           setMobileOpen
         }
         activeView={activeView}
-        onViewChange={(view) => { setActiveView(view); setMobileOpen(false); }}
+        onViewChange={(view) => {
+          if (view === "chat") {
+            handleBackToNormalChats();
+          } else {
+            setActiveView(view);
+            setMobileOpen(false);
+          }
+        }}
       />
 
-      <main className={`chat-home ${activeView !== "chat" ? "secondary-view-active" : ""}`}>
+      <main className="chat-home">
         {activeView === "projects" ? (
-          <section className="secondary-view">
-            <header className="chat-header secondary-header">
-              <div className="header-left">
-                <button
-                  type="button"
-                  className="mobile-menu-button secondary-back-button"
-                  aria-label="Back to chat"
-                  onClick={() => setActiveView("chat")}
-                >
-                  ←
-                </button>
-
-                <div className="header-title">
-                  <img src={logo} alt="AUREX" />
-                  <span>Projects</span>
-                </div>
-              </div>
-            </header>
-
-            <div className="secondary-view-content">
-              <ProjectPanel
-                projects={projects}
-                documents={documents}
-                activeProjectId={activeProjectId}
-                onSelect={(id) => {
-                  setActiveProjectId(id);
-                  setActiveView("chat");
-                  loadConversations();
-                }}
-                onCreate={handleCreateProject}
-                onUpdate={handleUpdateProject}
-                onDelete={handleDeleteProject}
-                onAttach={handleAttachProjectDocument}
-                onDetach={handleDetachProjectDocument}
-              />
-            </div>
-          </section>
+          <ProjectPanel
+            projects={projects}
+            documents={documents}
+            activeProjectId={activeProjectId}
+            projectConversations={conversations}
+            onSelect={(id) => {
+              if (id === null) {
+                handleBackToNormalChats();
+                return;
+              }
+              handleOpenProject(id);
+            }}
+            onOpenChat={handleOpenProjectChat}
+            onBackToChats={handleBackToNormalChats}
+            onTogglePin={handleTogglePin}
+            onCreate={handleCreateProject}
+            onUpdate={handleUpdateProject}
+            onDelete={handleDeleteProject}
+            onAttach={handleAttachProjectDocument}
+            onDetach={handleDetachProjectDocument}
+          />
         ) : activeView === "settings" ? (
-          <section className="secondary-view">
-            <header className="chat-header secondary-header">
-              <div className="header-left">
-                <button
-                  type="button"
-                  className="mobile-menu-button secondary-back-button"
-                  aria-label="Back to chat"
-                  onClick={() => setActiveView("chat")}
-                >
-                  ←
-                </button>
-
-                <div className="header-title">
-                  <img src={logo} alt="AUREX" />
-                  <span>Settings</span>
-                </div>
-              </div>
-            </header>
-
-            <div className="secondary-view-content">
-              <SettingsPanel
-                settings={settings}
-                onChange={setSettings}
-                onSave={handleSaveSettings}
-                onClearChats={handleClearChats}
-                onDeleteDocuments={handleDeleteAllDocuments}
-              />
-            </div>
-          </section>
+          <SettingsPanel settings={settings} onChange={setSettings} onSave={handleSaveSettings} onClearChats={handleClearChats} onDeleteDocuments={handleDeleteAllDocuments} />
         ) : (
         <>
         {/* =================================================
@@ -2814,9 +2943,10 @@ function ChatPage({
             <button
               type="button"
               className="mobile-menu-button"
-              aria-label="Open navigation menu"
               onClick={() =>
-                setMobileOpen(true)
+                setMobileOpen(
+                  true,
+                )
               }
             >
               ☰
@@ -2836,7 +2966,9 @@ function ChatPage({
 
           <select
             className="model-selector"
-            value={selectedModel}
+            value={
+              selectedModel
+            }
             onChange={(event) => {
               setSelectedModel(event.target.value);
               setSettings(previous => ({ ...previous, model: event.target.value }));
@@ -3330,6 +3462,11 @@ export default function App() {
         "aurex_token",
       );
 
+    const savedRefreshToken =
+      localStorage.getItem(
+        "aurex_refresh_token",
+      );
+
     const savedUser =
       localStorage.getItem(
         "aurex_user",
@@ -3337,6 +3474,7 @@ export default function App() {
 
     if (
       savedToken &&
+      savedRefreshToken &&
       savedUser
     ) {
       try {
@@ -3377,6 +3515,13 @@ export default function App() {
       data.access_token,
     );
 
+    if (data.refresh_token) {
+      localStorage.setItem(
+        "aurex_refresh_token",
+        data.refresh_token,
+      );
+    }
+
     localStorage.setItem(
       "aurex_user",
       JSON.stringify(
@@ -3409,6 +3554,13 @@ export default function App() {
       "aurex_token",
       data.access_token,
     );
+
+    if (data.refresh_token) {
+      localStorage.setItem(
+        "aurex_refresh_token",
+        data.refresh_token,
+      );
+    }
 
     localStorage.setItem(
       "aurex_user",

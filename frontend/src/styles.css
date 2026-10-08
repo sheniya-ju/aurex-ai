@@ -7592,3 +7592,169 @@ body,
     }
   }
 }
+
+/* =========================================================
+   PINNED CHATS
+   Added for AUREX pinned-chat separation
+========================================================= */
+
+.pinned-section {
+  margin-top: 18px;
+}
+
+.pinned-section .section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 10px 7px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  font-weight: 700;
+}
+
+.pinned-section .recent-chat-menu {
+  color: var(--red);
+}
+
+/* =========================================================
+   PROJECT BACK BUTTON
+   Added for returning from a project folder to normal chats
+========================================================= */
+
+.project-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  border-radius: 9px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.18s,
+    color 0.18s,
+    background 0.18s;
+}
+
+.project-back-button:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+:root[data-theme="dark"] .project-back-button:hover {
+  background: var(--red-soft);
+}
+
+/* =========================================================
+   PROJECT CHAT LIST
+========================================================= */
+
+.project-chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.project-chat-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--text);
+  transition:
+    border-color 0.18s,
+    background 0.18s;
+}
+
+.project-chat-item:hover {
+  border-color: var(--red);
+  background: var(--red-soft);
+}
+
+.project-chat-item-main {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.project-chat-item-main span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.project-chat-pin {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+}
+
+.project-chat-pin:hover {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+/* =========================================================
+   RESPONSIVE PROJECT LAYOUT
+========================================================= */
+
+@media (max-width: 900px) {
+  .project-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .aurex-panel-page {
+    padding: 28px 22px 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .aurex-panel-page {
+    padding: 22px 14px 65px;
+  }
+
+  .panel-heading {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .panel-heading h2 {
+    font-size: 25px;
+  }
+
+  .project-editor {
+    padding: 15px;
+  }
+
+  .project-back-button {
+    width: 100%;
+  }
+}
