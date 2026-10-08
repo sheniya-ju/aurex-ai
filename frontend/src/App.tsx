@@ -1870,6 +1870,7 @@ function Sidebar({
   onNewChat,
   onSelectConversation,
   onDeleteConversation,
+  onTogglePin,
   onLogout,
   mobileOpen,
   setMobileOpen,
