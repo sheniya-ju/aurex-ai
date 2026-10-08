@@ -1,203 +1,185 @@
+# AUREX AI 🤖
 
-```markdown
-# AUREX AI
+> An AI-powered full-stack chatbot with intelligent conversations, PDF-based RAG, project workspaces, chat history, and document-aware responses.
 
-### Intelligence, unified.
+## 🌐 Live Demo
 
-AUREX AI is a full-stack AI chatbot platform that combines general-purpose AI assistance with document-based Retrieval-Augmented Generation (RAG) in a single interface.
+https://aurex-ai-gray.vercel.app
 
-Users can chat with the AI, upload PDF documents, ask questions about their documents, view relevant sources, manage conversations, and organize their work through projects.
+## 💻 GitHub Repository
+
+https://github.com/sheniya-ju/aurex-ai
 
 ---
 
-## 🚀 Features
+## 📌 About the Project
+
+**AUREX AI** is a full-stack AI chatbot application built to provide intelligent, context-aware conversations while allowing users to work with their own documents and organize conversations into projects.
+
+The project was built from the ground up, covering everything from the frontend interface and backend APIs to authentication, database integration, document processing, AI integration, and deployment.
+
+The goal was not just to build a chatbot, but to understand how a modern AI-powered full-stack application works as a complete system.
+
+---
+
+## ✨ Features
 
 ### 🤖 AI Chat
 
-- General-purpose AI conversations
-- Context-aware responses
-- Markdown formatting
-- Headings and lists
-- Code block rendering
+- AI-powered conversations
+- Streaming AI responses
+- Markdown and code rendering
 - Copy responses
-- Copy code blocks
+- Reply to individual messages
+- New conversation support
 - Conversation history
-- New chat functionality
-- Message actions
-- Responsive chat interface
 
-### 📄 PDF RAG
+### 📄 PDF & Document RAG
 
 - Upload PDF documents
-- Extract text from PDF pages
-- Split documents into searchable chunks
-- Generate vector embeddings
-- Semantic document search
-- Ask questions about uploaded documents
+- Process uploaded documents
+- Extract document content
 - Retrieve relevant document context
-- Source document references
-- Page-level source references
-- View source excerpts
+- Ask questions based on uploaded documents
+- View sources used for responses
+- View source excerpts and page information
+- Delete uploaded documents
 
-### 🔀 Intelligent Document Context
+### 📁 Project Workspaces
 
-AUREX AI can use uploaded document information when a user's question is related to the documents.
+- Create multiple projects
+- Add project descriptions and instructions
+- Attach documents to projects
+- Project-specific conversations
+- Multiple chats inside a project
+- Project-aware document context
+- Pin project conversations
+- Edit and delete projects
 
-The system combines:
+### 💬 Conversation Management
 
-```text
-User Question
-      ↓
-Document Context Retrieval
-      ↓
-Relevant Information
-      ↓
-AI Model
-      ↓
-Generated Answer
-```
-
-This allows users to ask questions naturally without manually handling the underlying retrieval process.
-
-### 💬 Chat Management
-
-- Create new conversations
-- View recent conversations
+- Create new chats
+- View chat history
 - Delete conversations
-- Persistent conversation history
-- User-specific conversations
-- Conversation titles
-- Message history
+- Pin important conversations
+- Separate project and normal conversations
+- Automatically generated conversation titles
 
-### 👤 Authentication
+### 🔐 Authentication
 
 - User registration
 - User login
-- Password hashing
-- JWT-based authentication
-- Protected API endpoints
-- User-specific data
-
-### 📁 Projects
-
-AUREX AI supports project-based organization for managing AI work and conversations.
+- Secure password handling
+- Token-based authentication
+- Protected API routes
 
 ### ⚙️ Settings
 
 - Application settings
-- Theme support
-- Dark mode
+- Model configuration
 - User preferences
 - Responsive settings interface
 
-### 🎨 User Interface
+### 📱 Responsive UI
 
-- Professional red and white design
-- AUREX AI branding
-- Responsive layout
-- Desktop support
-- Tablet support
-- Mobile support
-- Modern chat interface
-- Document attachment interface
-- Source viewer
+- Desktop-friendly interface
+- Mobile responsive design
+- Mobile sidebar
+- Responsive chat composer
+- Clean and modern UI
 
 ---
 
-# 🏗️ System Architecture
+## 🛠️ Tech Stack
 
-```text
-                         AUREX AI
-                            │
-                            ▼
-                 ┌─────────────────────┐
-                 │   React Frontend    │
-                 │ React + TypeScript  │
-                 │       + Vite        │
-                 └──────────┬──────────┘
-                            │
-                         HTTPS
-                            │
-                            ▼
-                 ┌─────────────────────┐
-                 │    FastAPI Backend  │
-                 │       Python        │
-                 └──────────┬──────────┘
-                            │
-          ┌─────────────────┼─────────────────┐
-          │                 │                 │
-          ▼                 ▼                 ▼
-   ┌────────────┐    ┌────────────┐    ┌────────────┐
-   │    Auth    │    │ AI / RAG   │    │    Chat    │
-   │   Service  │    │  Services  │    │   Service  │
-   └────────────┘    └──────┬─────┘    └────────────┘
-                             │
-                    ┌────────┴────────┐
-                    │                 │
-                    ▼                 ▼
-             ┌─────────────┐   ┌─────────────┐
-             │ PostgreSQL  │   │   Chroma    │
-             │   Database  │   │ Vector DB   │
-             └─────────────┘   └─────────────┘
-```
-
----
-
-# 🛠️ Technology Stack
-
-## Frontend
+### Frontend
 
 - React
 - TypeScript
 - Vite
 - CSS
 - Lucide React
-- Responsive UI
 
-## Backend
+### Backend
 
 - Python
 - FastAPI
 - SQLAlchemy
 - Pydantic
-- JWT Authentication
+- REST APIs
 
-## AI
-
-- Groq API
-- GPT-OSS model
-- Retrieval-Augmented Generation (RAG)
-
-## Document Processing
-
-- PyMuPDF
-- Sentence Transformers
-- Chroma
-
-## Database
+### Database
 
 - PostgreSQL
-- SQLAlchemy ORM
 
-## Development Tools
+### AI
+
+- Groq API
+- `openai/gpt-oss-20b`
+- Retrieval-Augmented Generation (RAG)
+
+### Vector / Document Processing
+
+- Chroma
+- PDF document processing
+- Document chunking
+- Semantic/context retrieval
+
+### Deployment
+
+- Vercel — Frontend
+- Render — Backend
+- PostgreSQL — Database
+
+### Development Tools
 
 - Git
 - GitHub
 - VS Code
+- Swagger / OpenAPI
 
 ---
 
-# 📂 Project Structure
+## 🏗️ Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │     AUREX AI UI     │
+                    │ React + TypeScript  │
+                    └──────────┬──────────┘
+                               │
+                               │ HTTPS / REST API
+                               ▼
+                    ┌─────────────────────┐
+                    │     FastAPI API     │
+                    │      Backend        │
+                    └──────────┬──────────┘
+                               │
+             ┌─────────────────┼─────────────────┐
+             │                 │                 │
+             ▼                 ▼                 ▼
+      ┌─────────────┐   ┌─────────────┐   ┌─────────────┐
+      │ PostgreSQL  │   │    RAG      │   │  Groq LLM   │
+      │  Database   │   │   System    │   │ GPT-OSS 20B │
+      └─────────────┘   └─────────────┘   └─────────────┘
+                              │
+                              ▼
+                       ┌─────────────┐
+                       │  Documents  │
+                       │  / PDFs     │
+                       └─────────────┘
+```
+
+---
+
+## 📂 Project Structure
 
 ```text
 aurex-ai/
 │
 ├── backend/
-│   │
 │   ├── app/
-│   │   │
 │   │   ├── api/
-│   │   │   ├── __init__.py
 │   │   │   ├── auth.py
 │   │   │   ├── chat.py
 │   │   │   ├── documents.py
@@ -205,23 +187,19 @@ aurex-ai/
 │   │   │   └── settings.py
 │   │   │
 │   │   ├── core/
-│   │   │   ├── __init__.py
 │   │   │   ├── config.py
 │   │   │   └── security.py
 │   │   │
 │   │   ├── database/
-│   │   │   ├── __init__.py
 │   │   │   ├── database.py
 │   │   │   └── models.py
 │   │   │
 │   │   ├── schemas/
-│   │   │   ├── __init__.py
 │   │   │   ├── auth.py
 │   │   │   ├── chat.py
 │   │   │   └── documents.py
 │   │   │
 │   │   ├── services/
-│   │   │   ├── __init__.py
 │   │   │   ├── llm_service.py
 │   │   │   ├── rag_service.py
 │   │   │   └── router.py
@@ -229,241 +207,175 @@ aurex-ai/
 │   │   └── main.py
 │   │
 │   ├── requirements.txt
-│   ├── .env.example
-│   └── .gitignore
+│   └── .env
 │
 ├── frontend/
-│   │
 │   ├── src/
 │   │   ├── assets/
 │   │   │   └── aurex-logo.png
+│   │   │
+│   │   ├── components/
+│   │   │   ├── ProjectPanel.tsx
+│   │   │   └── SettingsPanel.tsx
+│   │   │
 │   │   ├── App.tsx
 │   │   ├── main.tsx
 │   │   ├── styles.css
 │   │   └── vite-env.d.ts
 │   │
-│   ├── index.html
 │   ├── package.json
-│   ├── package-lock.json
-│   ├── tsconfig.json
-│   ├── tsconfig.app.json
-│   ├── tsconfig.node.json
-│   └── vite.config.ts
+│   └── index.html
 │
-├── .gitignore
 └── README.md
 ```
 
 ---
 
-# 🔐 Authentication Flow
+## 🔄 How AUREX AI Works
 
-AUREX AI uses JWT-based authentication.
+### 1. User Authentication
+
+Users can register and log in to access their conversations, documents, projects, and settings.
+
+### 2. Normal AI Chat
 
 ```text
-                User
-                 │
-                 ▼
-        ┌─────────────────┐
-        │ Register / Login│
-        └────────┬────────┘
-                 │
-                 ▼
-        ┌─────────────────┐
-        │ FastAPI Backend │
-        └────────┬────────┘
-                 │
-                 ▼
-        ┌─────────────────┐
-        │ Password Verify │
-        └────────┬────────┘
-                 │
-                 ▼
-          JWT Access Token
-                 │
-                 ▼
-        Authenticated User
+User Message
+     ↓
+FastAPI Backend
+     ↓
+AI Request
+     ↓
+Groq LLM
+     ↓
+Streaming Response
+     ↓
+AUREX AI Chat Interface
 ```
 
-Protected API requests use the JWT access token.
-
----
-
-# 📄 Retrieval-Augmented Generation
-
-AUREX AI uses RAG to answer questions based on uploaded documents.
-
-The document processing pipeline is:
+### 3. Document-Based Chat
 
 ```text
 PDF Upload
      ↓
-Text Extraction
+Document Processing
      ↓
-Page Processing
+Text Extraction
      ↓
 Text Chunking
      ↓
-Embedding Generation
+Vector / Context Retrieval
      ↓
-Vector Storage
-     ↓
-User Question
-     ↓
-Semantic Search
-     ↓
-Relevant Chunks
-     ↓
-AI Context
+Relevant Sources
      ↓
 LLM
      ↓
-Generated Answer
-     ↓
-Source References
+Context-Aware Answer
 ```
 
-Document information is used internally to provide context to the AI.
-
-Users can optionally view:
-
-- Source document
-- Page number
-- Relevant excerpt
-
----
-
-# 🧠 AI Response Flow
-
-For a normal question:
+### 4. Project Chat
 
 ```text
-User
- ↓
-AUREX AI
- ↓
-LLM
- ↓
-Response
-```
-
-For a document-related question:
-
-```text
-User
- ↓
-AUREX AI
- ↓
-Document Retrieval
- ↓
-Relevant PDF Content
- ↓
-LLM
- ↓
-Context-aware Response
- ↓
-Sources
+Project
+   │
+   ├── Project Instructions
+   │
+   ├── Project Documents
+   │
+   ├── Chat 1
+   │
+   ├── Chat 2
+   │
+   └── Chat 3
+          ↓
+    Project Context
+          ↓
+        RAG
+          ↓
+       AI Response
 ```
 
 ---
 
-# 💻 Local Installation
+## 🚀 Getting Started
 
-## 1. Clone the Repository
+### Prerequisites
+
+Make sure you have:
+
+- Node.js
+- Python 3.10+
+- PostgreSQL
+- Git
+- Groq API key
+
+### Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/aurex-ai.git
-```
+git clone https://github.com/sheniya-ju/aurex-ai.git
 
-Move into the project:
-
-```bash
 cd aurex-ai
 ```
 
 ---
 
-# 🐍 Backend Setup
+## ⚙️ Backend Setup
 
-Move into the backend directory:
+Go to the backend:
 
 ```bash
 cd backend
 ```
 
-Create a Python virtual environment:
+Create a virtual environment:
 
 ```bash
 python -m venv venv
 ```
 
-Activate the virtual environment on Windows:
+Activate it on Windows:
 
-```powershell
-.\venv\Scripts\activate
+```bash
+venv\Scripts\activate
 ```
 
-Install the required packages:
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-# 🔑 Backend Environment Variables
-
-Create a file named:
-
-```text
-backend/.env
-```
-
-Add the required environment variables:
+Create a `.env` file:
 
 ```env
-DATABASE_URL=your_database_url
-SECRET_KEY=your_secret_key
+DATABASE_URL=your_postgresql_database_url
 GROQ_API_KEY=your_groq_api_key
+SECRET_KEY=your_secret_key
 ```
 
-Do not commit the `.env` file to GitHub.
-
----
-
-# ▶️ Run the Backend
-
-From the `backend` directory:
+Start the backend:
 
 ```bash
-python -m uvicorn app.main:app --reload
+uvicorn app.main:app --reload
 ```
 
-The backend will run at:
+Backend will run at:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-FastAPI documentation will be available at:
+API documentation:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-Alternative documentation:
-
-```text
-http://127.0.0.1:8000/redoc
-```
-
 ---
 
-# ⚛️ Frontend Setup
+## 💻 Frontend Setup
 
-Open a new terminal.
-
-Move into the frontend directory:
+Open another terminal:
 
 ```bash
 cd frontend
@@ -475,13 +387,19 @@ Install dependencies:
 npm install
 ```
 
+Create a `.env` file:
+
+```env
+VITE_API_URL=http://127.0.0.1:8000
+```
+
 Start the development server:
 
 ```bash
 npm run dev
 ```
 
-The frontend will normally be available at:
+The frontend will run at:
 
 ```text
 http://localhost:5173
@@ -489,275 +407,93 @@ http://localhost:5173
 
 ---
 
-# 🏗️ Production Build
+## 🔑 Environment Variables
 
-To create a production build of the frontend:
+Never commit your real API keys or passwords.
 
-```bash
-npm run build
+Example:
+
+```env
+DATABASE_URL=your_database_url
+GROQ_API_KEY=your_groq_api_key
+SECRET_KEY=your_secret_key
 ```
 
-The generated production files will be placed inside:
-
-```text
-frontend/dist/
-```
+Make sure `.env` is included in `.gitignore`.
 
 ---
 
-# 🔒 Security
 
-AUREX AI follows basic security practices including:
 
-- Password hashing
-- JWT authentication
-- Protected API routes
-- User-specific conversations
-- User-specific documents
-- Environment variables for secrets
-- `.gitignore` protection for local files
-
-### Never commit:
-
-```text
-.env
-backend/.env
-backend/venv/
-backend/chroma_data/
-backend/uploads/
-frontend/node_modules/
-frontend/dist/
-```
-
-API keys and database credentials must always remain private.
-
----
-
-# 📱 Responsive Design
-
-AUREX AI is designed to adapt to different screen sizes.
-
-Supported layouts include:
-
-- Desktop
-- Laptop
-- Tablet
-- Mobile
-
-The interface adapts:
-
-- Sidebar
-- Chat area
-- Message area
-- Composer
-- Document attachments
-- Source panels
-- Projects
-- Settings
-
----
-
-# 🎨 Design
-
-AUREX AI uses a professional red and white visual identity.
-
-### Primary Colors
-
-```text
-Primary Red:  #D71920
-Dark Red:     #B91C1C
-White:        #FFFFFF
-Light Gray:   #F7F7F7
-Border:       #E5E5E5
-Text:         #171717
-Muted Text:   #737373
-```
-
-The application also supports a dark theme.
-
----
-
-# 📊 Current Capabilities
-
-| Feature | Status |
-|---|---|
-| User Registration | ✅ |
-| User Login | ✅ |
-| JWT Authentication | ✅ |
-| AI Chat | ✅ |
-| Chat History | ✅ |
-| New Chat | ✅ |
-| Delete Chat | ✅ |
-| PDF Upload | ✅ |
-| PDF Text Extraction | ✅ |
-| Document Chunking | ✅ |
-| Vector Embeddings | ✅ |
-| Chroma Vector Search | ✅ |
-| RAG Responses | ✅ |
-| Source References | ✅ |
-| Source Page Numbers | ✅ |
-| Markdown Rendering | ✅ |
-| Code Blocks | ✅ |
-| Markdown Tables | ✅ |
-| Projects | ✅ |
-| Settings | ✅ |
-| Dark Mode | ✅ |
-| Responsive UI | ✅ |
-
----
-
-# 🚀 Deployment Architecture
-
-The planned production architecture is:
-
-```text
-                    GitHub
-                       │
-             ┌─────────┴─────────┐
-             │                   │
-             ▼                   ▼
-         Vercel               Render
-             │                   │
-             │              FastAPI Backend
-             │                   │
-             │          ┌────────┴────────┐
-             │          │                 │
-             │          ▼                 ▼
-             │     PostgreSQL          Vector Storage
-             │
-             ▼
-       React Frontend
-             │
-             └──────────────► FastAPI API
-```
-
----
-
-# 🌐 Deployment
-
-AUREX AI is designed to be deployed as a separate frontend and backend application.
+## 🌐 Deployment
 
 ### Frontend
 
-```text
-React + TypeScript + Vite
-        ↓
-     Vercel
-```
+The frontend is deployed using **Vercel**.
 
 ### Backend
 
-```text
-FastAPI + Python
-        ↓
-      Render
-```
+The FastAPI backend is deployed using **Render**.
 
 ### Database
 
-```text
-PostgreSQL
-```
-
-### Vector Storage
-
-```text
-Chroma / Persistent Vector Storage
-```
-
-Environment variables are configured separately in the deployment platforms and are not stored in the GitHub repository.
+PostgreSQL is used for persistent application data.
 
 ---
 
-# 🧪 Testing Checklist
+## 🎯 What I Learned
 
-Before deployment, verify:
+Building AUREX AI helped me gain practical experience in:
 
-```text
-☐ Register a new user
-☐ Login
-☐ Create a new chat
-☐ Ask a general AI question
-☐ Receive an AI response
-☐ Test Markdown formatting
-☐ Test Markdown tables
-☐ Test code blocks
-☐ Upload a PDF
-☐ Ask a question about the PDF
-☐ Verify document-based response
-☐ Open source references
-☐ Verify page numbers
-☐ Create another conversation
-☐ Refresh the application
-☐ Verify chat history
-☐ Delete a conversation
-☐ Test settings
-☐ Test dark mode
-☐ Test mobile responsiveness
-```
-
----
-
-# 🔮 Future Improvements
-
-Planned improvements include:
-
-- [ ] Streaming AI responses
-- [ ] Advanced automatic AI/RAG routing
-- [ ] Multiple AI model selection
-- [ ] Web search
-- [ ] Voice input
-- [ ] Image understanding
-- [ ] Image generation
-- [ ] More document formats
-- [ ] Advanced project management
-- [ ] Chat search
-- [ ] File management
-- [ ] Admin dashboard
-- [ ] Usage analytics
-- [ ] Improved RAG ranking
-- [ ] Production-grade vector storage
-- [ ] Enhanced security
-- [ ] Production monitoring
-
----
-
-# 📚 Learning Outcomes
-
-This project demonstrates practical experience with:
-
-- Full-stack web development
-- React
-- TypeScript
-- Python
-- FastAPI
-- REST APIs
-- SQLAlchemy
-- PostgreSQL
+- Building full-stack applications
+- Designing REST APIs
+- React and TypeScript development
+- FastAPI backend development
+- PostgreSQL database design
+- SQLAlchemy ORM
 - Authentication
-- JWT
-- AI API integration
-- Retrieval-Augmented Generation
-- Vector databases
-- Embeddings
-- PDF processing
-- Semantic search
-- Responsive UI development
-- Git and GitHub
+- AI/LLM integration
+- RAG architecture
+- PDF/document processing
+- State management
+- Streaming responses
+- Git and GitHub workflows
 - Cloud deployment
+- Debugging production issues
+- Building responsive interfaces
 
 ---
 
-# 👩‍💻 Author
+## 🔮 Future Improvements
 
-## Sheniya
+Some features I would like to explore further:
 
-B.Tech Information Technology
-
-AUREX AI was developed as a full-stack AI application project combining modern web development, backend engineering, database management, and artificial intelligence.
+- Advanced semantic search
+- More AI model options
+- Improved document retrieval
+- Voice conversations
+- Image understanding
+- More file formats
+- Team collaboration
+- Shared project workspaces
+- Advanced analytics
+- Improved personalization
 
 ---
 
-# 📜 License
+## 👩‍💻 Developer
 
-This project is developed for educational, internship, and portfolio purposes.
+**Sheniya**
+Full-Stack Development | AI | Web Development
+
+---
+
+## ⭐ Support
+
+If you find this project interesting, consider giving the repository a ⭐ on GitHub!
+
+---
+
+## 📜 License
+
+This project is created for learning, development, and portfolio purposes.
