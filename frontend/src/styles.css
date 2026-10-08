@@ -8050,3 +8050,310 @@ body,
     padding: 9px 10px;
   }
 }
+/* =========================
+   PROJECT CHAT SECTION
+   ========================= */
+
+.project-chats-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.project-new-chat-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+
+/* Project toolbar */
+
+.project-editor {
+  min-width: 0;
+}
+
+.project-folder-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.project-folder-toolbar h3 {
+  margin: 5px 0 4px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.project-folder-toolbar p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.project-back-button {
+  flex-shrink: 0;
+}
+
+
+/* Project sections */
+
+.project-folder-section,
+.project-files {
+  margin-top: 24px;
+}
+
+.project-section-heading {
+  margin-bottom: 12px;
+}
+
+.project-section-heading h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 5px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.project-section-heading p {
+  margin: 0;
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* Project chat list */
+
+.project-chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.project-chat-item {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 4px 6px 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    transform 0.15s;
+}
+
+.project-chat-item:hover {
+  border-color: rgba(230, 80, 88, 0.35);
+  background: var(--surface-soft);
+}
+
+
+/* Chat open button */
+
+.project-chat-main {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 6px;
+
+  border: 0;
+  background: transparent;
+  color: var(--text);
+
+  text-align: left;
+  cursor: pointer;
+}
+
+.project-chat-main svg {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.project-chat-main span {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+/* Pin button */
+
+.project-chat-pin {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--muted);
+
+  cursor: pointer;
+  opacity: 0.7;
+
+  transition:
+    background 0.15s,
+    color 0.15s,
+    opacity 0.15s;
+}
+
+.project-chat-pin:hover,
+.project-chat-pin.pinned {
+  background: var(--red-soft);
+  color: var(--red);
+  opacity: 1;
+}
+
+.project-chat-pin.pinned svg {
+  fill: currentColor;
+}
+
+
+/* Empty project chat state */
+
+.project-empty-state {
+  padding: 18px;
+
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+
+/* =========================
+   PROJECT FILES
+   ========================= */
+
+.file-toggle {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+
+  margin-bottom: 7px;
+  padding: 9px 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: var(--surface);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.file-toggle:hover {
+  border-color: rgba(230, 80, 88, 0.35);
+  background: var(--surface-soft);
+}
+
+.file-toggle input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+
+  margin: 0;
+
+  accent-color: var(--red);
+  cursor: pointer;
+}
+
+.file-toggle span {
+  flex: 1;
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--text);
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.file-toggle small {
+  flex-shrink: 0;
+
+  color: var(--muted);
+  font-size: 11px;
+}
+
+
+/* Project save button */
+
+.project-editor > .primary-button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 20px;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 700px) {
+
+  .project-folder-toolbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .project-back-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-chats-heading {
+    flex-direction: column;
+  }
+
+  .project-new-chat-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-chat-item {
+    min-height: 44px;
+  }
+
+  .file-toggle {
+    padding: 9px 10px;
+  }
+}

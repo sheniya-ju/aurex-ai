@@ -87,6 +87,7 @@ type Props = {
   onSelect: (id: number | null) => void;
 
   onOpenChat: (id: number) => void;
+  onNewProjectChat: () => void;
 
   onBackToChats: () => void;
 
@@ -139,7 +140,7 @@ export default function ProjectPanel({
   onOpenChat,
 
   onBackToChats,
-
+  onNewProjectChat,
   onTogglePin,
 
   onCreate,
@@ -517,34 +518,30 @@ export default function ProjectPanel({
             <>
 
               <div className="project-folder-section">
+  <div className="project-section-heading project-chats-heading">
+    <div>
+      <h3>
+        <MessageSquare size={16} />
+        Project chats
+      </h3>
 
-                <div className="project-section-heading">
+      <p>
+        Chats created inside this project automatically use
+        the selected project files for context.
+      </p>
+    </div>
 
-                  <div>
+    <button
+      type="button"
+      className="secondary-button project-new-chat-button"
+      onClick={onNewProjectChat}
+    >
+      <Plus size={15} />
+      New chat
+    </button>
+  </div>
 
-                    <h3>
-
-                      <MessageSquare size={16} />
-
-                      Project chats
-
-                    </h3>
-
-                    <p>
-
-                      Chats created inside this project automatically use
-
-                      the selected project files for RAG.
-
-                    </p>
-
-                  </div>
-
-                </div>
-
-
-
-                <div className="project-chat-list">
+  <div className="project-chat-list">
 
                   {projectConversations.length === 0 ? (
 

@@ -2358,24 +2358,32 @@ function ChatPage({
 
   function handleNewChat() {
     setMessages([]);
-
-    setActiveConversationId(
-      null,
-    );
-
+    setActiveConversationId(null);
     setInput("");
-
     setSelectedDocumentIds([]);
-
     setError("");
-
-    setReplyingTo(
-      null,
-    );
+    setReplyingTo(null);
 
     setTimeout(() => {
       inputRef.current?.focus();
     }, 50);
+  }
+
+  function handleNewProjectChat() {
+    setMessages([]);
+    setActiveConversationId(null);
+    setInput("");
+    setSelectedDocumentIds([]);
+    setError("");
+    setReplyingTo(null);
+
+    // Keep the currently selected project active.
+    // Only the conversation is reset.
+    setActiveView("chat");
+
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
   }
 
   /* =======================================================
@@ -2962,6 +2970,7 @@ function ChatPage({
             }}
             onOpenChat={handleOpenProjectChat}
             onBackToChats={handleBackToNormalChats}
+            onNewProjectChat={handleNewProjectChat}
             onTogglePin={handleTogglePin}
             onCreate={handleCreateProject}
             onUpdate={handleUpdateProject}
