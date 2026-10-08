@@ -15,7 +15,7 @@ import SettingsPanel, { AppSettings } from "./components/SettingsPanel";
 import logo from "./assets/aurex-logo.png";
 import "./styles.css";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 const DEFAULT_MODEL = "openai/gpt-oss-20b";
 
@@ -33,6 +33,7 @@ type UserData = {
 
 type AuthResponse = {
   access_token: string;
+  refresh_token?: string;
   token_type: string;
   user: UserData;
 };
@@ -82,19 +83,93 @@ type AppView = "chat" | "projects" | "settings";
    AUTHENTICATION TOKEN
 ========================================================= */
 
-function getToken(): string {
-  const token =
-    localStorage.getItem(
-      "aurex_token",
-    );
+function getAccessToken(): string | null {
+  return localStorage.getItem("aurex_token");
+}
 
-  if (!token) {
-    throw new Error(
-      "Your session has expired. Please sign in again.",
-    );
+function getRefreshToken(): string | null {
+  return localStorage.getItem("aurex_refresh_token");
+}
+
+function clearAuthStorage() {
+  localStorage.removeItem("aurex_token");
+  localStorage.removeItem("aurex_refresh_token");
+  localStorage.removeItem("aurex_user");
+}
+
+async function refreshAccessToken(): Promise<string | null> {
+  const refreshToken = getRefreshToken();
+
+  if (!refreshToken) {
+    return null;
   }
 
-  return token;
+  try {
+    const response = await fetch(`${API_URL}/api/auth/refresh`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        refresh_token: refreshToken,
+      }),
+    });
+
+    if (!response.ok) {
+      clearAuthStorage();
+      return null;
+    }
+
+    const data = await response.json();
+
+    if (!data.access_token) {
+      clearAuthStorage();
+      return null;
+    }
+
+    localStorage.setItem("aurex_token", data.access_token);
+    return data.access_token;
+  } catch {
+    clearAuthStorage();
+    return null;
+  }
+}
+
+async function apiFetch(
+  url: string,
+  options: RequestInit = {},
+): Promise<Response> {
+  let token = getAccessToken();
+
+  if (!token) {
+    throw new Error("Your session has expired. Please sign in again.");
+  }
+
+  const headers = new Headers(options.headers || {});
+  headers.set("Authorization", `Bearer ${token}`);
+
+  let response = await fetch(url, {
+    ...options,
+    headers,
+  });
+
+  if (response.status === 401) {
+    token = await refreshAccessToken();
+
+    if (!token) {
+      throw new Error("Your session has expired. Please sign in again.");
+    }
+
+    const retryHeaders = new Headers(options.headers || {});
+    retryHeaders.set("Authorization", `Bearer ${token}`);
+
+    response = await fetch(url, {
+      ...options,
+      headers: retryHeaders,
+    });
+  }
+
+  return response;
 }
 
 /* =========================================================
@@ -181,18 +256,14 @@ async function sendChatMessage(
   model: string,
   documentIds: number[],
 ): Promise<ChatResponse> {
-  const token =
-    getToken();
-
   const response =
-    await fetch(
+    await apiFetch(
       `${API_URL}/api/chat/message`,
       {
         method: "POST",
         headers: {
           "Content-Type":
             "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           message,
@@ -228,12 +299,10 @@ async function streamChatMessage(
   onToken: (token: string) => void,
   onDone: () => void,
 ): Promise<void> {
-  const token = getToken();
-  const response = await fetch(`${API_URL}/api/chat/stream`, {
+  const response = await apiFetch(`${API_URL}/api/chat/stream`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       message,
@@ -273,19 +342,11 @@ async function streamChatMessage(
 async function fetchConversations(
   projectId: number | null = null,
 ): Promise<Conversation[]> {
-  const token =
-    getToken();
-
   const response =
-    await fetch(
+    await apiFetch(
       `${API_URL}/api/chat/conversations${
         projectId ? `?project_id=${projectId}` : ""
       }`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
     );
 
   const data =
@@ -304,17 +365,9 @@ async function fetchConversations(
 async function fetchConversationMessages(
   conversationId: number,
 ): Promise<ChatMessage[]> {
-  const token =
-    getToken();
-
   const response =
-    await fetch(
+    await apiFetch(
       `${API_URL}/api/chat/conversations/${conversationId}/messages`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
     );
 
   const data =
@@ -333,18 +386,10 @@ async function fetchConversationMessages(
 async function deleteConversation(
   conversationId: number,
 ): Promise<void> {
-  const token =
-    getToken();
-
   const response =
-    await fetch(
+    await apiFetch(
       `${API_URL}/api/chat/conversations/${conversationId}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
+      { method: "DELETE" },
     );
 
   const data =
@@ -365,17 +410,9 @@ async function deleteConversation(
 async function fetchDocuments(): Promise<
   DocumentItem[]
 > {
-  const token =
-    getToken();
-
   const response =
-    await fetch(
+    await apiFetch(
       `${API_URL}/api/documents`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
     );
 
   const data =
@@ -394,9 +431,6 @@ async function fetchDocuments(): Promise<
 async function uploadDocument(
   file: File,
 ): Promise<DocumentItem> {
-  const token =
-    getToken();
-
   const formData =
     new FormData();
 
@@ -406,13 +440,10 @@ async function uploadDocument(
   );
 
   const response =
-    await fetch(
+    await apiFetch(
       `${API_URL}/api/documents/upload`,
       {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
         body: formData,
       },
     );
@@ -433,18 +464,10 @@ async function uploadDocument(
 async function deleteDocument(
   documentId: number,
 ): Promise<void> {
-  const token =
-    getToken();
-
   const response =
-    await fetch(
+    await apiFetch(
       `${API_URL}/api/documents/${documentId}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
+      { method: "DELETE" },
     );
 
   const data =
@@ -459,54 +482,54 @@ async function deleteDocument(
 }
 
 async function fetchProjects(): Promise<Project[]> {
-  const response = await fetch(`${API_URL}/api/projects`, { headers: { Authorization: `Bearer ${getToken()}` } });
+  const response = await apiFetch(`${API_URL}/api/projects`);
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Unable to load projects.");
   return data;
 }
 
 async function createProjectApi(name: string, description: string, instructions: string) {
-  const response = await fetch(`${API_URL}/api/projects`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` }, body: JSON.stringify({ name, description, instructions }) });
+  const response = await apiFetch(`${API_URL}/api/projects`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, description, instructions }) });
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Unable to create project.");
   return data as Project;
 }
 
 async function updateProjectApi(id: number, name: string, description: string, instructions: string) {
-  const response = await fetch(`${API_URL}/api/projects/${id}`, { method: "PATCH", headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` }, body: JSON.stringify({ name, description, instructions }) });
+  const response = await apiFetch(`${API_URL}/api/projects/${id}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, description, instructions }) });
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Unable to update project.");
   return data as Project;
 }
 
 async function deleteProjectApi(id: number) {
-  const response = await fetch(`${API_URL}/api/projects/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${getToken()}` } });
+  const response = await apiFetch(`${API_URL}/api/projects/${id}`, { method: "DELETE" });
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Unable to delete project.");
 }
 
 async function attachProjectDocument(projectId: number, documentId: number, detach = false) {
-  const response = await fetch(`${API_URL}/api/projects/${projectId}/documents/${documentId}`, { method: detach ? "DELETE" : "POST", headers: { Authorization: `Bearer ${getToken()}` } });
+  const response = await apiFetch(`${API_URL}/api/projects/${projectId}/documents/${documentId}`, { method: detach ? "DELETE" : "POST" });
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Unable to update project file.");
 }
 
 async function fetchSettings(): Promise<AppSettings> {
-  const response = await fetch(`${API_URL}/api/settings`, { headers: { Authorization: `Bearer ${getToken()}` } });
+  const response = await apiFetch(`${API_URL}/api/settings`);
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Unable to load settings.");
   return data;
 }
 
 async function updateSettingsApi(settings: AppSettings): Promise<AppSettings> {
-  const response = await fetch(`${API_URL}/api/settings`, { method: "PATCH", headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` }, body: JSON.stringify(settings) });
+  const response = await apiFetch(`${API_URL}/api/settings`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(settings) });
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Unable to save settings.");
   return data;
 }
 
 async function clearChatsApi() {
-  const response = await fetch(`${API_URL}/api/settings/chats`, { method: "DELETE", headers: { Authorization: `Bearer ${getToken()}` } });
+  const response = await apiFetch(`${API_URL}/api/settings/chats`, { method: "DELETE" });
   const data = await response.json();
   if (!response.ok) throw new Error(data.detail || "Unable to clear chat history.");
 }
@@ -3306,6 +3329,11 @@ export default function App() {
         "aurex_token",
       );
 
+    const savedRefreshToken =
+      localStorage.getItem(
+        "aurex_refresh_token",
+      );
+
     const savedUser =
       localStorage.getItem(
         "aurex_user",
@@ -3313,6 +3341,7 @@ export default function App() {
 
     if (
       savedToken &&
+      savedRefreshToken &&
       savedUser
     ) {
       try {
@@ -3325,13 +3354,7 @@ export default function App() {
           parsedUser,
         );
       } catch {
-        localStorage.removeItem(
-          "aurex_token",
-        );
-
-        localStorage.removeItem(
-          "aurex_user",
-        );
+        clearAuthStorage();
       }
     }
 
@@ -3358,6 +3381,13 @@ export default function App() {
       "aurex_token",
       data.access_token,
     );
+
+    if (data.refresh_token) {
+      localStorage.setItem(
+        "aurex_refresh_token",
+        data.refresh_token,
+      );
+    }
 
     localStorage.setItem(
       "aurex_user",
@@ -3392,6 +3422,13 @@ export default function App() {
       data.access_token,
     );
 
+    if (data.refresh_token) {
+      localStorage.setItem(
+        "aurex_refresh_token",
+        data.refresh_token,
+      );
+    }
+
     localStorage.setItem(
       "aurex_user",
       JSON.stringify(
@@ -3409,13 +3446,7 @@ export default function App() {
   ======================================================= */
 
   function handleLogout() {
-    localStorage.removeItem(
-      "aurex_token",
-    );
-
-    localStorage.removeItem(
-      "aurex_user",
-    );
+    clearAuthStorage();
 
     setUser(null);
 
