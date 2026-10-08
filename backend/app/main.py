@@ -35,8 +35,7 @@ ALLOWED_ORIGINS = [
     # Production Vercel URL
     "https://aurex-ai-gray.vercel.app",
 
-    # Current Vercel deployment URL
-    "https://aurex-aub2ckv9m-shen-d3e5.vercel.app",
+  
 ]
 
 
